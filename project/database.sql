@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_NAME = "RVD.db"
+DB_NAME = "RWD.db"
 
 
 def create_tables():
