@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Properties</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+
+            <!--Home/Logo-->
+        <div class="container-fluid d-flex align-items-center" >
+            <a href="index.html" class="navbar-brand logo">Hytte</a>
+
+                <!-- Hamburger -->
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <div class="ms-auto d-flex ">
+
+                    <form class="p-2 d-flex"><a href="listings.html" class="btn btnNav">My listings</a></form>
+                    <form class="p-2 d-flex"><a href="bookmarks.html" class="btn btnNav">Saved Properties</a></form>
+
+                    <form class="d-flex p-2">
+                        <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                            Log in
+                      </button>
+                                                        
+
+                                <!-- Modal -->
+                            <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="LoginModalLabel">Login</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body justify-content-start">
+
+
+                                        <div class="mb-3">
+                                            <label for="usernameInput" class="form-label"><b>Username</b></label>
+                                            <input type="text" id="usernameInput" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                            <label for="passwordInput" class="form-label"><b>Password</b></label>
+                                            <input type="password" id="passwordInput" class="form-control">
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                    <form class="d-flex p-2">
+
+                        
+                      <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                            Sign Up
+                      </button>
+                                                        
+
+                                <!-- Modal -->
+                            <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUplLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="LoginModalLabel">Sign Up</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body justify-content-start">
+
+
+                                        <div class="mb-3">
+                                            <label for="usernameInputSU" class="form-label"><b>Username</b></label>
+                                            <input type="text" id="usernameInputSU" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="passwordInputSU" class="form-label"><b>Password</b></label>
+                                            <input type="password" id="passwordInputSU" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="emailInputSU" class="form-label"><b>Email</b></label>
+                                            <input type="email" id="emailInputSU" class="form-control">
+                                        </div>
+
+
+                                        <h5>Your reason for signing up</h5>
+                                            <div class="row">
+                                                <div class="col-4 p-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toRent">
+                                                        <label class="form-check-label" for="toRent"><strong>Rent</strong></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 p-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toLease">
+                                                        <label class="form-check-label" for="toRent"><strong>To Lease</strong></label>
+                                                    </div>
+                                                    </div>
+                                            </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sign up</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+
+    <main>
+        <div class="container px-1 px-md-5 my-4">
+            <h2>Risøya</h2>
+              <p>A charming cabin in the Norwegian archipelago just outside Søgne.
+                 With 16 beds, there is space for the whole family to gather. Explore nearby islands by boat, swim in clear waters,
+                  grill in the outdoor boathouse, and enjoy long summer evenings with sunset views over the sea.</p>
+
+            <div class="image-scroll mb-2">
+
+                <img src="img/SøgneDrone.jpg" alt="SøgneDrone">
+                <img src="img/SøgneUte.jpg" alt="SøgneUte">
+                <img src="img/SøgneStue.jpg" alt="SøgneStue">
+                <img src="img/SøgneAneks.jpg" alt="SøgneAneks">
+              
+
+            </div>
+            
+            <div class="mb-4">
+                <h4> Price: 1000 AUD per night</h4>
+                
+                    <b>Landlord:</b> Ørjan Kjellevoll <br>
+                
+            </div>
+
+            <div class="mb-3">
+
+                <div class="my-2 border-top border-2 border-black">
+                    <div class="my-4">
+                        <h4>Facilities and rooms</h4>
+                        <div class="row">
+                            <div class="col-6 col-md-4">&bull;WiFi</div>
+                            <div class="col-6 col-md-4">&bull;Parking</div>
+                            <div class="col-6 col-md-4">&bull;Fireplace</div>
+                            <div class="col-6 col-md-4">&bull;Sauna</div>
+                            <div class="col-6 col-md-4">&bull;Boat</div>
+                            <div class="col-6 col-md-4">&bull;Washing machine</div>
+                             <div class="col-6 col-md-4">&bull;Livingroom</div>
+                            <div class="col-6 col-md-4">&bull;TV</div>
+                            <div class="col-6 col-md-4">&bull;16 beds</div>
+                            <div class="col-6 col-md-4">&bull;7 bedrooms</div>
+                            <div class="col-6 col-md-4">&bull;Kitchen</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="d-flex my-3">
+                <button class="btn btn-primary me-2">Save</button>
+                <button class="btn btn-primary">Make Enquiry</button>
+            </div>
+
+            <div id="documents" class="my-5 border-top border-2 border-black">
+                <div class="my-5">
+                    <h4>Documents</h4>
+                    <b>Contract to rent: </b><a href="img/contract.pdf" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Contract</a>
+                </div>      
+            </div>
+
+            
+    </main>
+        
+    <!-- Footer -->
+    <footer class="footer mt-auto py-5 bg-dark">
+        <div class="text-center text-white">
+            Hytte @2026 - Made by the Legend Ørjan Kjellevoll
+        </div>
+        
+    </footer>
+  </body>
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+
+            <!--Home/Logo-->
+        <div class="container-fluid d-flex align-items-center" >
+            <a href="index.html" class="navbar-brand logo">Hytte</a>
+
+                <!-- Hamburger -->
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <div class="ms-auto d-flex ">
+
+                    <form class="d-flex p-2" role="search" >
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button class="btn btnNav" type="submit">Search</button>
+                    </form>
+
+                    <form class="p-2 d-flex"><a href="listings.html" class="btn btnNav">My listings</a></form>
+                    <form class="p-2 d-flex"><a href="bookmarks.html" class="btn btnNav">Saved Properties</a></form>
+                    
+                    <form class="d-flex p-2">
+
+                        
+                      <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                            Log in
+                      </button>
+                                                        
+
+                                <!-- Modal -->
+                            <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="LoginModalLabel">Login</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body justify-content-start">
+
+
+                                        <div class="mb-3">
+                                            <label for="usernameInput" class="form-label"><b>Username</b></label>
+                                            <input type="text" id="usernameInput" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                            <label for="passwordInput" class="form-label"><b>Password</b></label>
+                                            <input type="password" id="passwordInput" class="form-control">
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+
+
+                    <form class="d-flex p-2">
+
+                        
+                      <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                            Sign Up
+                      </button>
+                                                        
+
+                                <!-- Modal -->
+                            <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUplLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="LoginModalLabel">Sign Up</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body justify-content-start">
+
+
+                                        <div class="mb-3">
+                                            <label for="usernameInputSU" class="form-label"><b>Username</b></label>
+                                            <input type="text" id="usernameInputSU" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="passwordInputSU" class="form-label"><b>Password</b></label>
+                                            <input type="password" id="passwordInputSU" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="emailInputSU" class="form-label"><b>Email</b></label>
+                                            <input type="email" id="emailInputSU" class="form-control">
+                                        </div>
+
+
+                                        <h5>Your reason for signing up</h5>
+                                            <div class="row">
+                                                <div class="col-4 p-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toRent">
+                                                        <label class="form-check-label" for="toRent"><strong>Rent</strong></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 p-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toLease">
+                                                        <label class="form-check-label" for="toRent"><strong>To Lease</strong></label>
+                                                    </div>
+                                                    </div>
+                                            </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sign up</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+
+        <!-- Welcome text -->
+    <div class="divWelcome container-fluid text-center py-5">
+        <h3 class="py-2 welcomeText">Welcome to Hytte</h3>
+        <p class="welcomeText py-2">Experience the Norwegian cabin dream. Cozy cabins across all of Norway - from fjords and islands to mountains and forests.</p>
+    </div>
+   
+    <div class="container my-4">
+        <div class="row g-3">
+                 <!-- Filters -->
+                <aside class="col-12 col-lg-3 align-items-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <strong>
+                                    <h4>Refine Search</h4>
+                                </strong>
+                                <label for="type" class="form-label">Type</label>
+                            
+                                <select name="Type" id="type" class="form-select">
+                                    <option value="0">Not specified</option>
+                                    <option value="1">Mountain</option>
+                                    <option value="2">Seaside</option>
+                                    <option value="3">Fjord</option>
+                                    <option value="4">Woods</option>
+
+                                </select>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="bedroom" class="form-label">Bedrooms</label>
+                                <input type="number" id="bedroom" class="form-control" placeholder="Min bedrooms">
+
+                            </div>
+                            <h5>Facilities</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="boatCheck">
+                                <label class="form-check-label" for="boatCheck">
+                                    Boat
+                                </label>
+
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="saunaCheck">
+                                <label class="form-check-label" for="saunaCheck">
+                                    Sauna
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="parkingCheck">
+                                <label class="form-check-label" for="parkingCheck">
+                                    Parking
+                                </label>
+                            </div>
+
+                            
+                            <div class="py-2 d-flex">
+                                <button class="btn btn-primary m-1 ms-auto">Submit</button>
+                                <button class="btn btn-secondary m-1">Reset</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </aside>
+            
+
+            <!-- Properties -->
+            <main class="col-12 col-lg-9"> 
+
+                <div class="container p-4">
+                    <div class="row g-4 justify-content-start align-items-start">
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card border-1 d-flex">
+                                <img src="img/SøgneDrone.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
+                                <div class="card-body">
+                                    <div class="card-text py-1 border-top"> 
+                                        <h5><strong>Risøya</strong></h5>
+                                        <Strong>Location: </Strong>Søgne<br>
+                                    <Strong>Type:</Strong> Seaside <br>
+                                        <Strong>Bedrooms:</Strong> 6 <br>
+                                        <!-- <strong>Description:</strong> A charming cabin in the Norwegian archipelago just outside Søgne. With 16 beds, there’s space for the whole family to gather. Explore nearby islands by boat, swim in clear waters, grill in the outdoor boathouse, and enjoy long summer evenings with sunset views over the sea. -->
+                                        <div class="d-flex justify-content-end">
+                                            <div class="p-2"><a href="property_details.html" class="btn btn-primary">See details</a></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card border-1">
+                                <img src="img/LofotenMain.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Lofoten">
+                                <div class="card-body">
+                                    <div class="card-text py-1 border-top"> 
+                                        <h5><strong>Lofoten</strong></h5>
+                                        <Strong>Location: </Strong>Lofoten<br>
+                                    <Strong>Type:</Strong> Fjord<br>
+                                        <Strong>Bedrooms:</Strong> 4 <br>
+                                        <!-- <strong>Description:</strong> A remote, cozy cabin in the Norwegian mountains. Discover hidden pools, a majestic waterfall, a tranquil lake, traditional mountain pastures, and panoramic peaks overlooking the Sauda Fjord. Perfect for an adventurous soul. -->
+                                        <div class="d-flex justify-content-end">
+                                            <div class="p-2"><a href="property_details.html" class="btn btn-primary">See Details</a></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card border-1">
+                                <img src="img/NorefjellDrone.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Nordefjell">
+                                <div class="card-body">
+                                    <div class="card-text py-1 border-top"> 
+                                        <h5><strong>Nordefjell</strong></h5>
+                                        <Strong>Location: </Strong>Nordefjell<br>
+                                    <Strong>Type:</Strong> Mountain<br>
+                                        <Strong>Bedrooms:</Strong> 5 <br>
+                                        <!-- <strong>Description:</strong> A remote, cozy cabin in the Norwegian mountains. Discover hidden pools, a majestic waterfall, a tranquil lake, traditional mountain pastures, and panoramic peaks overlooking the Sauda Fjord. Perfect for an adventurous soul. -->
+                                        <div class="d-flex justify-content-end">
+                                            <div class="p-2"><a href="property_details.html" class="btn btn-primary">See Details</a></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card border-1">
+                                <img src="img/DroneVårstøl.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
+                                <div class="card-body">
+                                    <div class="card-text py-1 border-top"> 
+                                        <h5><strong>Vårstøl</strong></h5>
+                                        <Strong>Location: </Strong>Sauda<br>
+                                    <Strong>Type:</Strong> Mountain<br>
+                                        <Strong>Bedrooms:</Strong> 4 <br>
+                                        <!-- <strong>Description:</strong> A remote, cozy cabin in the Norwegian mountains. Discover hidden pools, a majestic waterfall, a tranquil lake, traditional mountain pastures, and panoramic peaks overlooking the Sauda Fjord. Perfect for an adventurous soul. -->
+                                        <div class="d-flex justify-content-end">
+                                            <div class="p-2"><a href="property_details.html" class="btn btn-primary">See Details</a></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer mt-auto py-5 bg-dark">
+        <div class="text-center text-white">
+            Hytte @2026 - Made by the Legend Ørjan Kjellevoll
+        </div>
+        
+    </footer>
+  </body>
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

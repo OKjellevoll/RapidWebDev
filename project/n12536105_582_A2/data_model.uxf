@@ -1,0 +1,67 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Tourist
+--
++tourist_id: INT &lt;&lt;PK&gt;&gt;
++username: VARCHAR(100)
++password: VARCHAR(255)
++email: VARCHAR(100)</help_text><element><id>UMLClass</id><coordinates><x>570</x><y>110</y><w>210</w><h>400</h></coordinates><panel_attributes>Property
+--
++propertyID: INT &lt;&lt;PK&gt;&gt;
++propertyTypeID: INT &lt;&lt;FK&gt;&gt;
++ownerID: INT &lt;&lt;FK&gt;&gt;
++name: VARCHAR(100)
++description: TEXT
++price_per_night: INT
++address: VARCHAR(100)
++location: VARCHAR(20)
++beds: INT
++bedrooms: INT
++bathrooms: INT
++area: INT
++notification_count: INT
++hasParking: BOOLEAN
++hasWifi: BOOLEAN
++hasKitchen: BOOLEAN
++hasBoat: BOOLEAN
++hasFireplace: BOOLEAN
++hasTv: BOOLEAN
++hasWasher: BOOLEAN
++hasLounge: BOOLEAN
++hasSauna: BOOLEAN
++hasGrill: BOOLEAN
++isPetFriendly: BOOLEAN
++has_board_games: BOOLEAN
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>60</y><w>210</w><h>100</h></coordinates><panel_attributes>Owner
+--
++ownerID: INT &lt;&lt;PK&gt;&gt;
++username: VARCHAR(100)
++password: VARCHAR(100)
++email: VARCHAR(100)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>910</x><y>180</y><w>210</w><h>100</h></coordinates><panel_attributes>Property Type
+--
++propertyTypeID: INT &lt;&lt;PK&gt;&gt;
++title: VARCHAR(100)
++description: TEXT</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>410</y><w>210</w><h>150</h></coordinates><panel_attributes>Enquiery
+--
++enquiryID: INT &lt;&lt;PK&gt;&gt;
++propertyID: INT &lt;&lt;FK&gt;&gt;
++touristID: INT &lt;&lt;FK&gt;&gt;
++text: TEXT
++startDate: DATE
++endDate: DATE
++response: TEXT
++accepted: BOOLEAN
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>210</y><w>210</w><h>100</h></coordinates><panel_attributes>Tourist
+--
++touristID: INT &lt;&lt;PK&gt;&gt;
++username: VARCHAR(100)
++password: VARCHAR(100)
++email: VARCHAR(100)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>910</x><y>420</y><w>210</w><h>80</h></coordinates><panel_attributes>Images
+--
++ImagesID: INT &lt;&lt;PK&gt;&gt;
++propertyID: INT &lt;&lt;FK&gt;&gt;
++imageURL: VARCHAR(200)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>460</y><w>170</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>460</y><w>190</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>110</y><w>190</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>300</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>210</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>800</x><y>160</y><w>100</w><h>70</h></coordinates><panel_attributes>Property Image
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>820</x><y>430</y><w>100</w><h>30</h></coordinates><panel_attributes>Type
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>460</x><y>90</y><w>100</w><h>30</h></coordinates><panel_attributes>Owned by
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>450</x><y>480</y><w>100</w><h>70</h></coordinates><panel_attributes>Enquiered property
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>300</x><y>350</y><w>120</w><h>20</h></coordinates><panel_attributes>Tourist Enquiery
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>880</x><y>440</y><w>100</w><h>70</h></coordinates><panel_attributes>1..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>550</x><y>440</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>780</x><y>440</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>890</x><y>190</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>410</x><y>90</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>260</x><y>310</y><w>100</w><h>70</h></coordinates><panel_attributes>1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>260</x><y>380</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>540</x><y>90</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>420</x><y>440</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>780</x><y>190</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*</panel_attributes><additional_attributes></additional_attributes></element></diagram>

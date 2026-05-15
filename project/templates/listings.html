@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+
+            <!--Home/Logo-->
+        <div class="container-fluid d-flex align-items-center" >
+            <a href="index.html" class="navbar-brand logo">Hytte</a>
+
+                <!-- Hamburger -->
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <div class="ms-auto d-flex ">
+
+                    <form class="p-2 d-flex"><a href="listings.html" class="btn btnNav">My listings</a></form>
+                    <form class="p-2 d-flex"><a href="bookmarks.html" class="btn btnNav">Saved Properties</a></form>
+                    
+                    <form class="d-flex p-2">
+                        <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                            Log in
+                      </button>
+                                                        
+
+                                <!-- Modal Login -->
+                            <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="LoginModalLabel">Login</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body justify-content-start">
+
+
+                                        <div class="mb-3">
+                                            <label for="usernameInput" class="form-label"><b>Username</b></label>
+                                            <input type="text" id="usernameInput" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3">
+                                            <label for="passwordInput" class="form-label"><b>Password</b></label>
+                                            <input type="password" id="passwordInput" class="form-control">
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                    <form class="d-flex p-2">
+
+                        
+                      <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                            Sign Up
+                      </button>
+                                                        
+
+                                <!-- Modal -->
+                            <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUplLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="LoginModalLabel">Sign Up</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body justify-content-start">
+
+
+                                        <div class="mb-3">
+                                            <label for="usernameInputSU" class="form-label"><b>Username</b></label>
+                                            <input type="text" id="usernameInputSU" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="passwordInputSU" class="form-label"><b>Password</b></label>
+                                            <input type="password" id="passwordInputSU" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="emailInputSU" class="form-label"><b>Email</b></label>
+                                            <input type="email" id="emailInputSU" class="form-control">
+                                        </div>
+
+
+                                        <h5>Your reason for signing up</h5>
+                                            <div class="row">
+                                                <div class="col-4 p-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toRent">
+                                                        <label class="form-check-label" for="toRent"><strong>Rent</strong></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 p-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toLease">
+                                                        <label class="form-check-label" for="toRent"><strong>To Lease</strong></label>
+                                                    </div>
+                                                    </div>
+                                            </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sign up</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+
+        <div class="divWelcome container-fluid text-center py-4 width=100%">
+            <h3 class="py-2 welcomeText">My listed properties</h3> 
+        </div>
+
+    <main class="col-12 col-lg-9"> 
+
+                <div class="container p-4">
+                    <div class="row g-4 justify-content-center align-items-start">
+
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card border-1 d-flex">
+                                <img src="img/SøgneDrone.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
+                                <div class="card-body">
+                                    <div class="card-text py-1 border-top"> 
+                                        <h5><strong>Risøya</strong></h5>
+                                        <Strong>Price per night: </Strong> 1000 AUD <br>
+                                        <Strong>Adresse: </Strong> Risøya 14 <br>
+                                        
+                                        <Strong>Notifications: </Strong> 2 <br>
+                                    </div>
+
+                                    <!-- Modal for editing -->
+                                    <div class="d-flex justify-content-end">
+
+                                            <div class="p-2"><button class="btn btn-primary  ms-auto"   data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button></div>
+                                            <div class="p-2"><a href="property_details.html" class="btn btn-primary">View</a></div>
+                                    </div>
+                                        
+                                        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="LoginModalLabel">Edit Property</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            </button>
+                                                        </div>
+
+
+                                                     <!-- Content-->
+                                                    <div class="modal-body justify-content-start">
+                                                        <form>
+
+                                                        <div class="row">
+                                                            
+                                                                <div class="col-12 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="name" class="form-label"><b>Name</b></label>
+                                                                        <input type="text" id="name" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="price" class="form-label"><b>Price</b></label>
+                                                                        <input type="number" id="price" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="type" class="form-label"><strong>Type</strong></label>
+                                                                            <select name="Type" id="type" class="form-select">
+                                                                                <option value="0">Not specified</option>
+                                                                                <option value="1">Mountain</option>
+                                                                                <option value="2">Seaside</option>
+                                                                                <option value="3">Fjord</option>
+                                                                                <option value="4">Woods</option>
+                                                                            </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="adresse" class="form-label"><b>Adresse</b></label>
+                                                                        <input type="text" id="adresse" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="location" class="form-label"><b>Location</b></label>
+                                                                        <input type="text" id="location" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="beds" class="form-label"><b>Beds</b></label>
+                                                                        <input type="number" id="beds" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="bedrooms" class="form-label"><b>Bedrooms</b></label>
+                                                                        <input type="number" id="bedrooms" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6">
+                                                                    <div class="mb-3">
+                                                                        <label for="area" class="form-label"><b>Area</b></label>
+                                                                        <input type="number" id="area" class="form-control">
+                                                                    </div>
+                                                                </div>
+
+                                                                    
+
+
+                                                                <h4>Facilities</h4>
+                                                                <div class="row p-1">
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="Parking">
+                                                                            <label class="form-check-label" for="Parking"><strong>Parking</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasWifi">
+                                                                            <label class="form-check-label" for="hasWifi"><strong>Wifi</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasKitchen">
+                                                                            <label class="form-check-label" for="hasKitchen"><strong>Kitchen</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasBoat">
+                                                                            <label class="form-check-label" for="hasBoat"><strong>Boat</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasFireplace">
+                                                                            <label class="form-check-label" for="hasFireplace"><strong>Fireplace</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasTV">
+                                                                            <label class="form-check-label" for="hasTV"><strong>TV</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasWM">
+                                                                            <label class="form-check-label" for="hasWM"><strong>Washer</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasLR">
+                                                                            <label class="form-check-label" for="hasLR"><strong>Lounge</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasSauna">
+                                                                            <label class="form-check-label" for="hasSauna"><strong>Sauna</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasGrill">
+                                                                            <label class="form-check-label" for="hasGrill"><strong>Grill</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="petFriendly">
+                                                                            <label class="form-check-label" for="petFriendly"><strong>Pets</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasBG">
+                                                                            <label class="form-check-label" for="hasBG"><strong>Bordgames</strong></label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <h4>Edit Photos</h4>
+
+                                                                <div class="col-12 col-md-6 col-lg-4">
+                                                                    <div class="card border-5 d-flex">
+                                                                        <img src="img/SøgneDrone.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
+                                                                        <div class="card-body">
+                                                                            <div class="border-top py-2"> 
+                                                                                <div class="d-flex justify-content-center">
+                                                                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                                                                </div>                                                                            </div>
+                                                                   
+                                                                
+                                                                        </div>   
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6 col-lg-4">
+                                                                    <div class="card border-5 d-flex">
+                                                                        <img src="img/SøgneUte.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
+                                                                        <div class="card-body">
+                                                                            <div class="border-top py-2"> 
+                                                                                <div class="d-flex justify-content-center">
+                                                                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                                                                </div>                                                                            </div>
+                                                                   
+                                                                
+                                                                        </div>   
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6 col-lg-4">
+                                                                    <div class="card border-5 d-flex">
+                                                                        <img src="img/SøgneStue.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
+                                                                        <div class="card-body">
+                                                                            <div class="border-top py-2"> 
+                                                                                <div class="d-flex justify-content-center">
+                                                                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                                                                </div>
+                                                                            </div>
+                                                                   
+                                                                 
+                                                                        </div>   
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6 col-lg-4">
+                                                                    <div class="card border-5 d-flex">
+                                                                        <img src="img/SøgneAneks.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
+                                                                        <div class="card-body">
+                                                                            <div class="border-top py-2"> 
+                                                                                <div class="d-flex justify-content-center">
+                                                                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                                                                </div>
+                                                                            </div>
+                                                                   
+                                                                
+                                                                        </div>   
+                                                                    </div>
+                                                                </div>
+                                                           
+                                                                
+
+                                                            
+                                                            
+                                                        </div>
+                                                        
+                                                        </form> 
+
+                                                    </div>
+
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                                    </div>
+
+                                                    
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    
+
+                                        
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card border-1 d-flex">
+                                <img src="img/DroneVårstøl.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
+                                <div class="card-body">
+                                    <div class="card-text py-1 border-top"> 
+                                        <h5><strong>Vårstøl</strong></h5>
+                                       <Strong>Price per night: </Strong> 100 AUD <br>
+                                        <Strong>Adresse: </Strong> Stølvegen 3 <br>
+                                        
+                                        <Strong>Notifications: </Strong> 5<br> 
+                                        
+                                        <div class="d-flex justify-content-end">
+                                                <div class="p-2"><button class="btn btn-primary  ms-auto"   data-bs-toggle="modal" data-bs-target="#EditModal2">Edit</button></div>
+                                                <div class="p-2"><a href="property_details.html" class="btn btn-primary">View</a></div>
+
+                                        </div>
+
+
+                                        <div class="modal fade" id="EditModal2" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="LoginModalLabel">Edit Property</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                </button>
+                                                            </div>
+
+
+                                                        <!-- Content-->
+                                                        <div class="modal-body justify-content-start">
+                                                            <form>
+
+                                                            <div class="row">
+                                                                
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="name" class="form-label"><b>Name</b></label>
+                                                                            <input type="text" id="name" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="price" class="form-label"><b>Price</b></label>
+                                                                            <input type="number" id="price" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="type" class="form-label"><strong>Type</strong></label>
+                                                                                <select name="Type" id="type" class="form-select">
+                                                                                    <option value="0">Not specified</option>
+                                                                                    <option value="1">Mountain</option>
+                                                                                    <option value="2">Seaside</option>
+                                                                                    <option value="3">Fjord</option>
+                                                                                    <option value="4">Woods</option>
+                                                                                </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="adresse" class="form-label"><b>Adresse</b></label>
+                                                                            <input type="text" id="adresse" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="location" class="form-label"><b>Location</b></label>
+                                                                            <input type="text" id="location" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="beds" class="form-label"><b>Beds</b></label>
+                                                                            <input type="number" id="beds" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="bedrooms" class="form-label"><b>Bedrooms</b></label>
+                                                                            <input type="number" id="bedrooms" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="area" class="form-label"><b>Area</b></label>
+                                                                            <input type="number" id="area" class="form-control">
+                                                                        </div>
+                                                                    </div>
+
+                                                                        
+
+
+                                                                    <h4>Facilities</h4>
+                                                                    <div class="row p-1">
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="Parking">
+                                                                                <label class="form-check-label" for="Parking"><strong>Parking</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasWifi">
+                                                                                <label class="form-check-label" for="hasWifi"><strong>Wifi</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasKitchen">
+                                                                                <label class="form-check-label" for="hasKitchen"><strong>Kitchen</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasBoat">
+                                                                                <label class="form-check-label" for="hasBoat"><strong>Boat</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasFireplace">
+                                                                                <label class="form-check-label" for="hasFireplace"><strong>Fireplace</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasTV">
+                                                                                <label class="form-check-label" for="hasTV"><strong>TV</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasWM">
+                                                                                <label class="form-check-label" for="hasWM"><strong>Washer</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasLR">
+                                                                                <label class="form-check-label" for="hasLR"><strong>Lounge</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasSauna">
+                                                                                <label class="form-check-label" for="hasSauna"><strong>Sauna</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasGrill">
+                                                                                <label class="form-check-label" for="hasGrill"><strong>Grill</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="petFriendly">
+                                                                                <label class="form-check-label" for="petFriendly"><strong>Pets</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-3 col-lg-2 p-2">
+                                                                            <div class="form-check form-switch">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasBG">
+                                                                                <label class="form-check-label" for="hasBG"><strong>Bordgames</strong></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <h4>Edit Photos</h4>
+
+                                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                                        <div class="card border-5 d-flex">
+                                                                            <img src="img/DroneVårstøl.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
+                                                                            <div class="card-body">
+                                                                                <div class="border-top py-2"> 
+                                                                                    <div class="d-flex justify-content-center">
+                                                                                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                                                                                    </div>                                                                            </div>
+                                                                    
+                                                                    
+                                                                            </div>   
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                                        <div class="card border-5 d-flex">
+                                                                            <img src="img/VårstølPeis.png" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
+                                                                            <div class="card-body">
+                                                                                <div class="border-top py-2"> 
+                                                                                    <div class="d-flex justify-content-center">
+                                                                                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                                                                                    </div>                                                                            </div>
+                                                                    
+                                                                    
+                                                                            </div>   
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                                        <div class="card border-5 d-flex">
+                                                                            <img src="img/VårstølTerrase.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
+                                                                            <div class="card-body">
+                                                                                <div class="border-top py-2"> 
+                                                                                    <div class="d-flex justify-content-center">
+                                                                                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                    
+                                                                    
+                                                                            </div>   
+                                                                        </div>
+                                                                    </div>
+                                                                  
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        
+    <!-- Footer -->
+   <footer class="footer mt-auto py-5 bg-dark">
+        <div class="text-center text-white">
+            Hytte @2026 - Made by the Legend Ørjan Kjellevoll
+        </div>
+        
+    </footer>
+  </body>
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

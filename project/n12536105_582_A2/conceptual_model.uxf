@@ -1,0 +1,97 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes
+
+</help_text><element><id>UMLClass</id><coordinates><x>426</x><y>198</y><w>126</w><h>300</h></coordinates><panel_attributes>Property
+--
++propertyID: int
++name: String
++description: String
++pricePerNight: float
++address: String
++location: String
++beds: int
++bedrooms: int
++bathrooms: int
++area: float
++notificationCount: int
++hasParking: boolean
++hasWifi: boolean
++hasKitchen: boolean
++hasBoat: boolean
++hasFireplace: boolean
++hasTV: boolean
++hasWasher: boolean
++hasLounge: boolean
++hasSauna: boolean
++hasGrill: boolean
++isPetFriendly: boolean
++hasBoardGames: boolean
+--
++EditProperty()
++RemoveProperty()
++FilterCabins()
++WatchDetails()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>12</x><y>282</y><w>126</w><h>114</h></coordinates><panel_attributes>Tourist
+--
++toruisID: int
++username: String
++password: String
++email: String
+--
++BookmarkCabin()
++Login()
++Logout()
++Signup()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>306</y><w>126</w><h>114</h></coordinates><panel_attributes>Enquiery
+--
++enquieryID: int
++text: String
++startDate: String
++endDate: String
++response: String
++accepted: boolean
+--
++CreateEnquiery()
++Responde()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>144</y><w>126</w><h>114</h></coordinates><panel_attributes>Owner
+--
++ownerID: int
++username: String
++password: String
++email: String
+--
++ownerLogin()
++ownerLogout()
++ownerSignup</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>456</y><w>96</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>132</x><y>354</y><w>84</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>192</y><w>108</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;90</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>354</y><w>108</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>396</y><w>126</w><h>114</h></coordinates><panel_attributes>Property Type
+--
++propertyTypeID: int
++title: String
++describsion: String
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>144</x><y>336</y><w>60</w><h>42</h></coordinates><panel_attributes>1
+
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>408</x><y>342</y><w>60</w><h>42</h></coordinates><panel_attributes>1
+
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>336</x><y>180</y><w>60</w><h>42</h></coordinates><panel_attributes>1
+
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>612</x><y>444</y><w>60</w><h>42</h></coordinates><panel_attributes>1
+
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>558</x><y>444</y><w>18</w><h>42</h></coordinates><panel_attributes>0..*
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>408</x><y>222</y><w>60</w><h>42</h></coordinates><panel_attributes>0..*
+
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>336</x><y>342</y><w>60</w><h>42</h></coordinates><panel_attributes>0..*
+
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>180</x><y>342</y><w>54</w><h>48</h></coordinates><panel_attributes>0..*
+
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>360</x><y>198</y><w>60</w><h>42</h></coordinates><panel_attributes>Owned by
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>144</x><y>366</y><w>72</w><h>42</h></coordinates><panel_attributes>Tourist Enquiery
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>354</x><y>366</y><w>60</w><h>42</h></coordinates><panel_attributes>Enquiered property
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>576</x><y>444</y><w>60</w><h>18</h></coordinates><panel_attributes>Type
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>636</x><y>246</y><w>126</w><h>48</h></coordinates><panel_attributes>Images
+--
++id: int
++imageURL: String
+--
+DeleteImage()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>264</y><w>108</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element><element><id>Text</id><coordinates><x>582</x><y>246</y><w>60</w><h>42</h></coordinates><panel_attributes>Property Image
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>552</x><y>252</y><w>60</w><h>42</h></coordinates><panel_attributes>1
+
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>618</x><y>252</y><w>18</w><h>42</h></coordinates><panel_attributes>1..*</panel_attributes><additional_attributes></additional_attributes></element></diagram>
