@@ -1,0 +1,117 @@
+/* Nordic Nature Theme */
+:root {
+  --primary: #2F5D50;
+  --secondary: #A3B18A;
+  --bg: #eae7e3;
+  --navbarMain: #1F3D36;
+  --card: #FFFFFF;
+  --accent: #D4A373;
+  --navbarBack: #b98b50;
+  --navBackHover: #d9b98a;
+}
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 0.6px;
+  color: var(--navbarBack);
+}
+.logo:hover {
+color: var(--navBackHover);
+}
+
+.navbar .btn {
+    border-color: var(--navbarBack);
+    color: var(--navbarBack);
+}
+
+.navbar .btn:hover {
+    border-color: var(--navBackHover);
+    color: var(--navBackHover)
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.navbar {
+  background-color: var(--navbarMain)!important;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.card {
+  background-color: var(--card);
+  border: none;
+}
+
+.card-title {
+  color: var(--primary);
+}
+
+.price {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.welcomeText {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary)
+}
+
+.divWelcome {
+    background-color: var(--navBackHover)
+}
+
+.btnNav:hover{
+    background-color:var(--primary);
+}
+
+.navbar-toggler {
+  border-color: var(--navbarBack); 
+}
+
+.card {
+    background-color: var(--card);
+}
+
+.image-scroll{
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 10px 0;
+}
+
+.image-scroll img{
+    height: 300px;
+    width: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#bookmarkCard:hover {
+   transform: translateY(-10px);
+   cursor: pointer;
+}
+
+#bookmarkCardBody {
+  height: 200px;
+  
+}
+
+#bookmarkLink {
+   text-decoration: none;
+}
