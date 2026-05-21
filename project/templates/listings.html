@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--Think there is some missing "render template returns somehwere in the code"-->
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -138,286 +138,32 @@
             <h3 class="py-2 welcomeText">My listed properties</h3> 
         </div>
 
+        
     <main class="col-12 col-lg-9"> 
-
                 <div class="container p-4">
                     <div class="row g-4 justify-content-center align-items-start">
-
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card border-1 d-flex">
-                                <img src="img/SøgneDrone.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
-                                <div class="card-body">
-                                    <div class="card-text py-1 border-top"> 
-                                        <h5><strong>Risøya</strong></h5>
-                                        <Strong>Price per night: </Strong> 1000 AUD <br>
-                                        <Strong>Adresse: </Strong> Risøya 14 <br>
+                        {% for property in properties %} <!-- Jinja -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="card border-1 d-flex">
+                                    <img src=""> <!-- need functionality for pictures -->
+                                    <div class="card-body">
                                         
-                                        <Strong>Notifications: </Strong> 2 <br>
-                                    </div>
-
-                                    <!-- Modal for editing -->
-                                    <div class="d-flex justify-content-end">
-
-                                            <div class="p-2"><button class="btn btn-primary  ms-auto"   data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button></div>
-                                            <div class="p-2"><a href="property_details.html" class="btn btn-primary">View</a></div>
-                                    </div>
-                                        
-                                        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="LoginModalLabel">Edit Property</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                            </button>
-                                                        </div>
-
-
-                                                     <!-- Content-->
-                                                    <div class="modal-body justify-content-start">
-                                                        <form>
-
-                                                        <div class="row">
-                                                            
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label for="name" class="form-label"><b>Name</b></label>
-                                                                        <input type="text" id="name" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label for="price" class="form-label"><b>Price</b></label>
-                                                                        <input type="number" id="price" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label for="type" class="form-label"><strong>Type</strong></label>
-                                                                            <select name="Type" id="type" class="form-select">
-                                                                                <option value="0">Not specified</option>
-                                                                                <option value="1">Mountain</option>
-                                                                                <option value="2">Seaside</option>
-                                                                                <option value="3">Fjord</option>
-                                                                                <option value="4">Woods</option>
-                                                                            </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label for="adresse" class="form-label"><b>Adresse</b></label>
-                                                                        <input type="text" id="adresse" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label for="location" class="form-label"><b>Location</b></label>
-                                                                        <input type="text" id="location" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label for="beds" class="form-label"><b>Beds</b></label>
-                                                                        <input type="number" id="beds" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label for="bedrooms" class="form-label"><b>Bedrooms</b></label>
-                                                                        <input type="number" id="bedrooms" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <div class="mb-3">
-                                                                        <label for="area" class="form-label"><b>Area</b></label>
-                                                                        <input type="number" id="area" class="form-control">
-                                                                    </div>
-                                                                </div>
-
-                                                                    
-
-
-                                                                <h4>Facilities</h4>
-                                                                <div class="row p-1">
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="Parking">
-                                                                            <label class="form-check-label" for="Parking"><strong>Parking</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasWifi">
-                                                                            <label class="form-check-label" for="hasWifi"><strong>Wifi</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasKitchen">
-                                                                            <label class="form-check-label" for="hasKitchen"><strong>Kitchen</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasBoat">
-                                                                            <label class="form-check-label" for="hasBoat"><strong>Boat</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasFireplace">
-                                                                            <label class="form-check-label" for="hasFireplace"><strong>Fireplace</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasTV">
-                                                                            <label class="form-check-label" for="hasTV"><strong>TV</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasWM">
-                                                                            <label class="form-check-label" for="hasWM"><strong>Washer</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasLR">
-                                                                            <label class="form-check-label" for="hasLR"><strong>Lounge</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasSauna">
-                                                                            <label class="form-check-label" for="hasSauna"><strong>Sauna</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasGrill">
-                                                                            <label class="form-check-label" for="hasGrill"><strong>Grill</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="petFriendly">
-                                                                            <label class="form-check-label" for="petFriendly"><strong>Pets</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-4 col-md-3 col-lg-2 p-2">
-                                                                        <div class="form-check form-switch">
-                                                                            <input class="form-check-input" type="checkbox" role="switch" id="hasBG">
-                                                                            <label class="form-check-label" for="hasBG"><strong>Bordgames</strong></label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <h4>Edit Photos</h4>
-
-                                                                <div class="col-12 col-md-6 col-lg-4">
-                                                                    <div class="card border-5 d-flex">
-                                                                        <img src="img/SøgneDrone.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
-                                                                        <div class="card-body">
-                                                                            <div class="border-top py-2"> 
-                                                                                <div class="d-flex justify-content-center">
-                                                                                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                                                                                </div>                                                                            </div>
-                                                                   
-                                                                
-                                                                        </div>   
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6 col-lg-4">
-                                                                    <div class="card border-5 d-flex">
-                                                                        <img src="img/SøgneUte.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
-                                                                        <div class="card-body">
-                                                                            <div class="border-top py-2"> 
-                                                                                <div class="d-flex justify-content-center">
-                                                                                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                                                                                </div>                                                                            </div>
-                                                                   
-                                                                
-                                                                        </div>   
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6 col-lg-4">
-                                                                    <div class="card border-5 d-flex">
-                                                                        <img src="img/SøgneStue.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
-                                                                        <div class="card-body">
-                                                                            <div class="border-top py-2"> 
-                                                                                <div class="d-flex justify-content-center">
-                                                                                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                                                                                </div>
-                                                                            </div>
-                                                                   
-                                                                 
-                                                                        </div>   
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12 col-md-6 col-lg-4">
-                                                                    <div class="card border-5 d-flex">
-                                                                        <img src="img/SøgneAneks.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
-                                                                        <div class="card-body">
-                                                                            <div class="border-top py-2"> 
-                                                                                <div class="d-flex justify-content-center">
-                                                                                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                                                                                </div>
-                                                                            </div>
-                                                                   
-                                                                
-                                                                        </div>   
-                                                                    </div>
-                                                                </div>
-                                                           
-                                                                
-
-                                                            
-                                                            
-                                                        </div>
-                                                        
-                                                        </form> 
-
-                                                    </div>
-
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-                                                    </div>
-
-                                                    
-
-                                                </div>
-                                            </div>
+                                        <div class="card-text py-1 border-top"> 
+                                            <h5><strong>{{ property.name }}</strong></h5>
+                                            <Strong>Price per night: </Strong> {{ property.price_per_night }} <br>
+                                            <Strong>Adress: </Strong> {{property.address}} <br>
+                                            
+                                            <Strong>Notifications: </Strong> {{property.notification_count}} <br> 
                                         </div>
-                                    
-                                    
 
-                                        
-                                    
-                                </div>
-
-                            </div>
-                        </div>
-                        
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card border-1 d-flex">
-                                <img src="img/DroneVårstøl.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
-                                <div class="card-body">
-                                    <div class="card-text py-1 border-top"> 
-                                        <h5><strong>Vårstøl</strong></h5>
-                                       <Strong>Price per night: </Strong> 100 AUD <br>
-                                        <Strong>Adresse: </Strong> Stølvegen 3 <br>
-                                        
-                                        <Strong>Notifications: </Strong> 5<br> 
-                                        
+                                        <!-- Modal for editing -->
                                         <div class="d-flex justify-content-end">
-                                                <div class="p-2"><button class="btn btn-primary  ms-auto"   data-bs-toggle="modal" data-bs-target="#EditModal2">Edit</button></div>
-                                                <div class="p-2"><a href="property_details.html" class="btn btn-primary">View</a></div>
 
+                                                <div class="p-2"><button class="btn btn-primary  ms-auto"   data-bs-toggle="modal" data-bs-target= #"EditModal{{ property.property_id }}">Edit</button></div>
+                                                <div class="p-2"><a href="{{ url_for('property_details', property_id=property.property_id) }}" class="btn btn-primary">View</a></div> <!--Using jinja to get the correct URL by fetcing URL for given propertty_id details page-->
                                         </div>
-
-
-                                        <div class="modal fade" id="EditModal2" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+                                            
+                                            <div class="modal fade" id="{{ property.property_id }}" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                             <div class="modal-header">
@@ -436,13 +182,13 @@
                                                                     <div class="col-12 col-md-6">
                                                                         <div class="mb-3">
                                                                             <label for="name" class="form-label"><b>Name</b></label>
-                                                                            <input type="text" id="name" class="form-control">
+                                                                            <input type="text" id="name{{property.property_id}}" class="form-control" value={{property.name}}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-12 col-md-6">
                                                                         <div class="mb-3">
                                                                             <label for="price" class="form-label"><b>Price</b></label>
-                                                                            <input type="number" id="price" class="form-control">
+                                                                            <input type="number" id="price{{property.price_per_night}}" class="form-control" value={{property.price_per_night}}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-12 col-md-6">
@@ -459,8 +205,8 @@
                                                                     </div>
                                                                     <div class="col-12 col-md-6">
                                                                         <div class="mb-3">
-                                                                            <label for="adresse" class="form-label"><b>Adresse</b></label>
-                                                                            <input type="text" id="adresse" class="form-control">
+                                                                            <label for="adresse" class="form-label"><b>Address</b></label>
+                                                                            <input type="text" id="adresse" class="form-control" value = {{property.adress}}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-12 col-md-6">
@@ -495,83 +241,83 @@
                                                                     <div class="row p-1">
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="Parking">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="Parking" {% if property.has_parking %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="Parking"><strong>Parking</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasWifi">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasWifi" {% if property.has_wifi %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasWifi"><strong>Wifi</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasKitchen">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasKitchen" {% if property.has_kitchen %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasKitchen"><strong>Kitchen</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasBoat">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasBoat"{% if property.has_boat %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasBoat"><strong>Boat</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasFireplace">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasFireplace" {% if property.has_fireplace %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasFireplace"><strong>Fireplace</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasTV">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasTV" {% if property.has_tv %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasTV"><strong>TV</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasWM">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasWasher" {% if property.has_washer %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasWM"><strong>Washer</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasLR">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasLounge {% if property.has_lounge %}checked{% endif %}>">
                                                                                 <label class="form-check-label" for="hasLR"><strong>Lounge</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasSauna">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasSauna" {% if property.has_sauna %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasSauna"><strong>Sauna</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasGrill">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasGrill" {% if property.has_grill %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasGrill"><strong>Grill</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="petFriendly">
-                                                                                <label class="form-check-label" for="petFriendly"><strong>Pets</strong></label>
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="petFriendly" {% if property.is_pet_friendly %}checked{% endif %}>
+                                                                                <label class="form-check-label" for="petFriendly"><strong>Pet friendly</strong></label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasBG">
-                                                                                <label class="form-check-label" for="hasBG"><strong>Bordgames</strong></label>
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasBoardgames" {% if property.has_board_games %}checked{% endif %}>
+                                                                                <label class="form-check-label" for="hasBG"><strong>Boardgames</strong></label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
-                                                                    <h4>Edit Photos</h4>
+                                                                    <h4>Edit Photos</h4> <!--Must add logic for images, remove all this and add one Jinja loop-->
 
                                                                     <div class="col-12 col-md-6 col-lg-4">
                                                                         <div class="card border-5 d-flex">
-                                                                            <img src="img/DroneVårstøl.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
+                                                                            <img src="img/SøgneDrone.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
                                                                             <div class="card-body">
                                                                                 <div class="border-top py-2"> 
                                                                                     <div class="d-flex justify-content-center">
@@ -584,7 +330,7 @@
                                                                     </div>
                                                                     <div class="col-12 col-md-6 col-lg-4">
                                                                         <div class="card border-5 d-flex">
-                                                                            <img src="img/VårstølPeis.png" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
+                                                                            <img src="img/SøgneUte.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
                                                                             <div class="card-body">
                                                                                 <div class="border-top py-2"> 
                                                                                     <div class="d-flex justify-content-center">
@@ -597,7 +343,7 @@
                                                                     </div>
                                                                     <div class="col-12 col-md-6 col-lg-4">
                                                                         <div class="card border-5 d-flex">
-                                                                            <img src="img/VårstølTerrase.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Vårstøl">
+                                                                            <img src="img/SøgneStue.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
                                                                             <div class="card-body">
                                                                                 <div class="border-top py-2"> 
                                                                                     <div class="d-flex justify-content-center">
@@ -609,12 +355,46 @@
                                                                             </div>   
                                                                         </div>
                                                                     </div>
-                                                                  
-                                    </div>
-                                </div>
+                                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                                        <div class="card border-5 d-flex">
+                                                                            <img src="img/SøgneAneks.jpg" class="card-img-top rounded-2 object-fit-cover" height="220px" alt="Søgne">
+                                                                            <div class="card-body">
+                                                                                <div class="border-top py-2"> 
+                                                                                    <div class="d-flex justify-content-center">
+                                                                                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                    
+                                                                    
+                                                                            </div>   
+                                                                        </div>
+                                                                    </div>
+                                                            
+                                                                    
 
+                                                                
+                                                                
+                                                            </div>
+                                                            
+                                                            </form> 
+
+                                                        </div>
+
+
+                                                        <div class="modal-footer"> <!--When this in clicked database must be updated-->
+                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                                        </div>
+
+                                                        
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </main>

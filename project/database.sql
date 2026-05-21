@@ -101,10 +101,8 @@ def create_tables():
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS bookmarks (
-            bookmark_id INTEGER PRIMARY KEY AUTOINCREMENT,
             tourist_id INTEGER NOT NULL,
             property_id INTEGER NOT NULL,
-            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
 
             FOREIGN KEY (tourist_id) REFERENCES tourists(tourist_id),
             FOREIGN KEY (property_id) REFERENCES properties(property_id),
