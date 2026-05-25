@@ -35,78 +35,111 @@
                     <form class="p-2 d-flex"><a href="listings.html" class="btn btnNav">My listings</a></form>
                     <form class="p-2 d-flex"><a href="bookmarks.html" class="btn btnNav">Saved Properties</a></form>
                     
-                    <!-- ============================================================ -->
-                    <!-- SECTION B - Vinod: Dynamic Navbar (Login / Register / Logout) -->
-                    <!-- ============================================================ -->
-                    {% if current_user %}
-                        <!-- User is logged in -->
-                        <div class="d-flex align-items-center px-2">
-                            <span class="me-2">Welcome, <strong>{{ current_user.username }}</strong></span>
-                            
-                            {% if current_user.role == "seller" %}
-                                <form class="p-2 d-flex">
-                                    <a href="{{ url_for('listings') }}" class="btn btnNav">My Listings</a>
-                                </form>
-                            {% endif %}
-                            
-                            <form class="p-2 d-flex">
-                                <a href="{{ url_for('logout') }}" class="btn btnNav">Logout</a>
-                            </form>
-                        </div>
-                    {% else %}
-                        <!-- User is NOT logged in -->
-                        
-                        <!-- ==================== SECTION B - Vinod: Fixed Login Modal ==================== -->
-                        <form class="d-flex p-2" method="POST" action="{{ url_for('owner_login') }}">
-                            <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#LoginModal">
-                                Log in
-                            </button>
+                    <form class="d-flex p-2">
 
-                            <!-- Login Modal -->
-                            <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
+                        
+                      <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                            Log in
+                      </button>
+                                                        
+
+                                <!-- Modal -->
+                            <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="LoginModalLabel">Login</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="LoginModalLabel">Login</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body justify-content-start">
 
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label for="username" class="form-label"><b>Username</b></label>
-                                                <input type="text" name="username" class="form-control" id="username" required>
+
+                                        <div class="mb-3">
+                                            <label for="usernameInput" class="form-label"><b>Username</b></label>
+                                            <input type="text" id="usernameInput" class="form-control">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="password" class="form-label"><b>Password</b></label>
-                                                <input type="password" name="password" class="form-control" id="password" required>
-                                            </div>
+                                            <label for="passwordInput" class="form-label"><b>Password</b></label>
+                                            <input type="password" id="passwordInput" class="form-control">
                                         </div>
 
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">Login</button>
-                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <!-- ==================== END SECTION B - Vinod ==================== -->
 
-                        <!-- Vinod added for register -->
-                        <form class="d-flex p-2">
-                            <a href="{{ url_for('register') }}" class="btn btnNav">Register</a>
-                        </form>
+                    </form>
+<!-- Vinod added for register -->
+<form class="d-flex p-2">
+    <a href="{{ url_for('register') }}" class="btn btnNav">Register</a>
+</form>
 
-                        <form class="d-flex p-2">
-                            <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#signUpModal">
-                                Sign Up
-                            </button>
-                        </form>
-                    {% endif %}
-                    <!-- ============================================================ -->
-                    <!-- END SECTION B - Vinod -->
-                    <!-- ============================================================ -->
+                    <form class="d-flex p-2">
 
+                        
+                      <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                            Sign Up
+                      </button>
+                                                        
+
+                                <!-- Modal -->
+                            <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUplLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="LoginModalLabel">Sign Up</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body justify-content-start">
+
+
+                                        <div class="mb-3">
+                                            <label for="usernameInputSU" class="form-label"><b>Username</b></label>
+                                            <input type="text" id="usernameInputSU" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="passwordInputSU" class="form-label"><b>Password</b></label>
+                                            <input type="password" id="passwordInputSU" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="emailInputSU" class="form-label"><b>Email</b></label>
+                                            <input type="email" id="emailInputSU" class="form-control">
+                                        </div>
+
+
+                                        <h5>Your reason for signing up</h5>
+                                            <div class="row">
+                                                <div class="col-4 p-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toRent">
+                                                        <label class="form-check-label" for="toRent"><strong>Rent</strong></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 p-2">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toLease">
+                                                        <label class="form-check-label" for="toRent"><strong>To Lease</strong></label>
+                                                    </div>
+                                                    </div>
+                                            </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sign up</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
                 </div>
             </div>
         </div>

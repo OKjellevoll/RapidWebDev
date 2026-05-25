@@ -4,6 +4,7 @@ DB_NAME = "RWD.db"
 
 
 def create_tables():
+
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
@@ -115,7 +116,10 @@ def create_tables():
     conn.close()
 
 
-    def createData():
+
+create_tables()
+
+def createData():    
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
  
@@ -198,6 +202,4 @@ def create_tables():
     conn.close()
     print("Database seeded successfully!")
 
-
-
-create_tables()
+createData()

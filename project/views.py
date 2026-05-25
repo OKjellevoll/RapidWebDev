@@ -1,14 +1,19 @@
-from flask import render_template, request, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session, flash
 from project import app
 from project import models
-
+from project import auth
 
 @app.route("/")
 @app.route("/index.html")
 def index():
     properties_list = models.getAllProperties()
-    return render_template("index.html", properties=properties_list)
-
+    current_user = auth.get_current_user()          # ← Add this line
+    print("=== DEBUG LOGIN ===")
+    print("Current User:", current_user)          # ← Check terminal
+    print("Is Logged In:", auth.is_logged_in())
+    return render_template("index.html", 
+                           properties=properties_list,
+                           current_user=current_user)
 
 @app.route("/listings.html")
 def listings():
@@ -34,43 +39,89 @@ def property_details(property_id):
         images=images
     )
 
+# ============================================================
+# SECTION B - Vinod: OLD LOGIN ROUTES (Commented out)
+# ============================================================
+
+#@app.route("/owner/login", methods=["POST"])
+#def owner_login():
+ #   username = request.form.get("username")
+ #   password = request.form.get("password")
+
+#    owner = models.ownerLoginVal(username, password)
+
+  #  if owner is None:
+  #      return "Invalid username or password"
+
+ #   session["owner_id"] = owner["owner_id"]
+ #   session["owner_username"] = owner["username"]
+
+ #   return redirect(url_for("index"))
+
+
+#@app.route("/tourist/login", methods=["POST"])
+#def tourist_login():
+ #   username = request.form.get("username")
+ #   password = request.form.get("password")
+#
+  #  tourist = models.touristLoginVal(username, password)
+
+  #  if tourist is None:
+ #       return "Invalid username or password"
+
+ #   session["tourist_id"] = tourist["tourist_id"] #starts session
+  #  session["tourist_username"] = tourist["username"] #dont know if we need this, not in use yet at least, move later if not in use
+
+ #   return redirect(url_for("index"))
+# ============================================================
+# SECTION B: AUTHENTICATION ROUTES (Added by Vinod till 155)
+# ============================================================
 
 @app.route("/owner/login", methods=["POST"])
 def owner_login():
     username = request.form.get("username")
     password = request.form.get("password")
-
-    owner = models.ownerLoginVal(username, password)
-
-    if owner is None:
-        return "Invalid username or password"
-
-    session["owner_id"] = owner["owner_id"]
-    session["owner_username"] = owner["username"]
-
-    return redirect(url_for("index"))
+    return auth.login_owner(username, password)
 
 
 @app.route("/tourist/login", methods=["POST"])
 def tourist_login():
     username = request.form.get("username")
     password = request.form.get("password")
-
-    tourist = models.touristLoginVal(username, password)
-
-    if tourist is None:
-        return "Invalid username or password"
-
-    session["tourist_id"] = tourist["tourist_id"] #starts session
-    session["tourist_username"] = tourist["username"] #dont know if we need this, not in use yet at least, move later if not in use
-
-    return redirect(url_for("index"))
+    return auth.login_tourist(username, password)
 
 
 @app.route("/logout")
 def logout():
-    session.clear()
-    return redirect(url_for("index"))
+    return auth.logout_user()
+
+
+# ------------------ Registration ------------------
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        email = request.form.get("email")
+        role = request.form.get("role")          # "seller" or "buyer"
+
+        success, message = auth.register_user(username, password, email, role)
+
+        if success:
+            flash(message, "success")
+            return redirect(url_for("index"))
+        else:
+            flash(message, "danger")
+            return redirect(url_for("register"))
+
+    # GET request → show registration form
+    return render_template("register.html")
+
+#@app.route("/logout")
+#def logout():
+#    session.clear()
+ #   return redirect(url_for("index"))
 
 
 @app.route("/property/<int:property_id>/enquiry", methods=["POST"])
