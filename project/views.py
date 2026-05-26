@@ -5,17 +5,17 @@ from project import auth
 
 @app.route("/")
 @app.route("/index.html")
+
 def index():
     properties_list = models.getAllProperties()
-    current_user = auth.get_current_user()          # ← Add this line
+    current_user = auth.get_current_user()         
     print("=== DEBUG LOGIN ===")
-    print("Current User:", current_user)          # ← Check terminal
+    print("Current User:", current_user)          
     print("Is Logged In:", auth.is_logged_in())
-    return render_template("index.html", 
-                           properties=properties_list,
-                           current_user=current_user)
+    return render_template("index.html", properties=properties_list, current_user=current_user)
 
 @app.route("/listings.html")
+@auth.seller_required
 def listings():
     owner_id = session.get("owner_id") #using session as thougt in class
     if not owner_id:
@@ -39,40 +39,6 @@ def property_details(property_id):
         images=images
     )
 
-# ============================================================
-# SECTION B - Vinod: OLD LOGIN ROUTES (Commented out)
-# ============================================================
-
-#@app.route("/owner/login", methods=["POST"])
-#def owner_login():
- #   username = request.form.get("username")
- #   password = request.form.get("password")
-
-#    owner = models.ownerLoginVal(username, password)
-
-  #  if owner is None:
-  #      return "Invalid username or password"
-
- #   session["owner_id"] = owner["owner_id"]
- #   session["owner_username"] = owner["username"]
-
- #   return redirect(url_for("index"))
-
-
-#@app.route("/tourist/login", methods=["POST"])
-#def tourist_login():
- #   username = request.form.get("username")
- #   password = request.form.get("password")
-#
-  #  tourist = models.touristLoginVal(username, password)
-
-  #  if tourist is None:
- #       return "Invalid username or password"
-
- #   session["tourist_id"] = tourist["tourist_id"] #starts session
-  #  session["tourist_username"] = tourist["username"] #dont know if we need this, not in use yet at least, move later if not in use
-
- #   return redirect(url_for("index"))
 # ============================================================
 # SECTION B: AUTHENTICATION ROUTES (Added by Vinod till 155)
 # ============================================================
@@ -106,22 +72,17 @@ def register():
         email = request.form.get("email")
         role = request.form.get("role")          # "seller" or "buyer"
 
-        success, message = auth.register_user(username, password, email, role)
+        success = auth.register_user(username, password, email, role)
 
         if success:
-            flash(message, "success")
+            flash("Sucessfully logged in", "success")
             return redirect(url_for("index"))
         else:
-            flash(message, "danger")
+            flash("Wrong username or password", "error")
             return redirect(url_for("register"))
 
     # GET request → show registration form
     return render_template("register.html")
-
-#@app.route("/logout")
-#def logout():
-#    session.clear()
- #   return redirect(url_for("index"))
 
 
 @app.route("/property/<int:property_id>/enquiry", methods=["POST"])
@@ -157,12 +118,12 @@ def owner_enquiries():
 
 
 @app.route("/property/<int:property_id>/bookmark", methods=["POST"])
-def addBookmark(property_id):
+def addBookmark(tourist_id, property_id, notes):
     tourist_id = session.get("tourist_id") #To get the correct bookmark list for this sessions tourist, same logic as listings (owner)
     if not tourist_id:
         return redirect(url_for("index"))
 
-    models.addBookmark(tourist_id, property_id)
+    models.addBookmark(tourist_id, property_id, notes)
 
     return redirect(url_for("property_details", property_id=property_id))
 

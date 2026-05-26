@@ -42,7 +42,7 @@ def login_owner(username, password):
         return redirect(url_for("index"))
 
     # Set session
-    session["user_id"] = owner["owner_id"]
+    session["owner_id"] = owner["owner_id"]
     session["role"] = "seller"
     session["username"] = owner["username"]
 
@@ -70,7 +70,7 @@ def login_tourist(username, password):
         return redirect(url_for("index"))
 
     # Set session
-    session["user_id"] = tourist["tourist_id"]
+    session["tourist_id"] = tourist["tourist_id"]
     session["role"] = "buyer"
     session["username"] = tourist["username"]
 
@@ -152,7 +152,7 @@ def login_required(f):
     """SECTION B - Vinod"""
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if "user_id" not in session:
+        if "owner_id" not in session and "tourist_id" not in session:
             flash("Please log in to access this page.", "warning")
             return redirect(url_for("index"))
         return f(*args, **kwargs)
@@ -187,9 +187,15 @@ def buyer_required(f):
 
 def get_current_user():
     """SECTION B - Vinod"""
-    if "user_id" in session:
+    if "owner_id" in session:
         return {
-            "user_id": session.get("user_id"),
+            "owner_id": session.get("owner_id"),
+            "role": session.get("role"),
+            "username": session.get("username")
+        }
+    if "tourist_id" in session:
+        return {
+            "tourist_id": session.get("tourist_id"),
             "role": session.get("role"),
             "username": session.get("username")
         }
@@ -208,4 +214,4 @@ def is_buyer():
 
 def is_logged_in():
     """SECTION B - Vinod"""
-    return "user_id" in session
+    return "owner_id" in session or "tourist_id" in session

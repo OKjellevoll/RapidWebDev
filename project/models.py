@@ -101,13 +101,13 @@ def create_enquiry(tourist_id, property_id, text, start_date, end_date):
     conn.commit()
     conn.close()
 
-def addBookmark(tourist_id, property_id):
+def addBookmark(tourist_id, property_id, notes):
     conn = getConnection()
     cursor = conn.cursor()
     cursor.execute("""
-        INSERT INTO bookmarks (tourist_id, property_id)
+        INSERT INTO bookmarks (tourist_id, property_id, notes)
         VALUES (?, ?)
-    """, (tourist_id, property_id))
+    """, (tourist_id, property_id, notes))
     conn.commit()
     conn.close()
 
