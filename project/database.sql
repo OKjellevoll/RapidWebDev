@@ -104,7 +104,7 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS bookmarks (
             tourist_id INTEGER NOT NULL,
             property_id INTEGER NOT NULL,
-            notes STRING NOT NULL,
+            notes STRING,
 
             FOREIGN KEY (tourist_id) REFERENCES tourists(tourist_id),
             FOREIGN KEY (property_id) REFERENCES properties(property_id),

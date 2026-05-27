@@ -152,7 +152,8 @@
                         <a href="{{ url_for('property_details', property_id=bookmark.property_id) }}">
                             <div class="card border-1 d-flex" id="bookmarkCard" >
                                 <!--Must add images later!!!!-->
-                                <img src="" class="card-img-top rounded-2 object-fit-cover" height="220px">
+                                <img src="{% if main_images[loop.index0].image_url %}" class="card-img-top rounded-2 object-fit-cover" height="220px">
+                                {%endif%}
                                 <div class="card-body" id="bookmarkCardBody">
                                     <div class="card-text py-1 border-top">
                                         <h5><strong>{{ bookmark.name }}</strong></h5>

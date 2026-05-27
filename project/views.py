@@ -8,11 +8,16 @@ from project import auth
 
 def index():
     properties_list = models.getAllProperties()
-    current_user = auth.get_current_user()         
+    current_user = auth.get_current_user()
+    main_images = []
+    for property in properties_list:
+        images = models.getAllImagesProperty(property["property_id"])
+        image = images[0] if images else None
+        main_images.append(image)       
     print("=== DEBUG LOGIN ===")
     print("Current User:", current_user)          
     print("Is Logged In:", auth.is_logged_in())
-    return render_template("index.html", properties=properties_list, current_user=current_user)
+    return render_template("index.html", properties=properties_list, current_user=current_user, main_images=main_images)
 
 @app.route("/listings.html")
 @auth.seller_required
@@ -33,11 +38,7 @@ def property_details(property_id):
     if property_data is None:
         return "Property not found"
 
-    return render_template(
-        "property_details.html",
-        property=property_data,
-        images=images
-    )
+    return render_template("property_details.html", property=property_data, images=images)
 
 # ============================================================
 # SECTION B: AUTHENTICATION ROUTES (Added by Vinod till 155)
@@ -86,6 +87,7 @@ def register():
 
 
 @app.route("/property/<int:property_id>/enquiry", methods=["POST"])
+@app.route("property_details.html")
 def send_enquiry(property_id):
     tourist_id = session.get("tourist_id")
     if not tourist_id:
@@ -135,7 +137,12 @@ def getBookmarks():
         return redirect(url_for("index"))
 
     bookmarks = models.getBookmarks(tourist_id)
-    return render_template("bookmarks.html", bookmarks=bookmarks)
+    main_images = []
+    for bookmark in bookmarks:
+        images = models.getAllImagesProperty(bookmark["property_id"])
+        image = images[0] if images else None
+        main_images.append(image)
+    return render_template("bookmarks.html", bookmarks=bookmarks, main_images=main_images)
 
 #Must add logic for this: (This is to be able to update the database when a property is updated in listings.html)
 #@app.route("/property/<int:property_id>/edit", methods=["POST"])

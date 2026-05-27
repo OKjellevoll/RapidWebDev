@@ -106,7 +106,7 @@ def addBookmark(tourist_id, property_id, notes):
     cursor = conn.cursor()
     cursor.execute("""
         INSERT INTO bookmarks (tourist_id, property_id, notes)
-        VALUES (?, ?)
+        VALUES (?, ?, ?)
     """, (tourist_id, property_id, notes))
     conn.commit()
     conn.close()
@@ -115,7 +115,7 @@ def getBookmarks(tourist_id):
     conn = getConnection()
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT properties.* FROM bookmarks
+        SELECT properties.*, bookmarks.notes FROM bookmarks
         JOIN properties ON bookmarks.property_id = properties.property_id
         WHERE bookmarks.tourist_id = ?
     """, (tourist_id,))
