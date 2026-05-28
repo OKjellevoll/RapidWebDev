@@ -28,8 +28,13 @@
             
                 <div class="ms-auto d-flex ">
 
-                    <form class="p-2 d-flex"><a href="listings.html" class="btn btnNav">My listings</a></form>
-                    <form class="p-2 d-flex"><a href="bookmarks.html" class="btn btnNav">Saved Properties</a></form>
+                    {% if session.get('role') == 'seller' %}
+                        <form class="p-2 d-flex"><a href="{{ url_for('listings') }}" class="btn btnNav">My listings</a></form>
+                    {% endif %}
+
+                    {% if session.get('role') == 'buyer' %}
+                        <form class="p-2 d-flex"><a href="{{ url_for('getBookmarks') }}" class="btn btnNav">Saved Properties</a></form>
+                    {% endif %}
 
                     
                     <form class="d-flex p-2">

@@ -32,14 +32,13 @@
                         <button class="btn btnNav" type="submit">Search</button>
                     </form>
                     <!--Using Jinja to make listings page available just for owners in the navbar-->
-                    <!-- 
+                    
                     {% if session.get('role') == 'seller' %}
                         <form class="p-2 d-flex"><a href="{{ url_for('listings') }}" class="btn btnNav">My listings</a></form>
                     {% endif %}
                     {% if session.get('role') == 'buyer' %}
                         <form class="p-2 d-flex"><a href="{{ url_for('getBookmarks') }}" class="btn btnNav">Saved Properties</a></form>
                     {% endif %}
-                    -->
                     <!-- ============================================================ -->
                     <!-- SECTION B - Vinod: Dynamic Navbar (Login / Register / Logout) -->
                     <!-- ============================================================ -->
