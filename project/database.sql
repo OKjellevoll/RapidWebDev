@@ -170,7 +170,7 @@ def createData():
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, [
         (1, 1, 4, "Sogne",      "Island cabin in the south of Norway",  150, "Risoya 14",        "Sogne",    14, 6, 2, 120, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0),
-        (2, 2, 1, "Varatal",    "Vakker hytte rett ved vannet",          200, "Hustunet 3",       "Sauda",     9, 4, 1,  80, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0),
+        (2, 2, 1, "Varstol",    "Vakker hytte rett ved vannet",          200, "Hustunet 3",       "Sauda",     9, 4, 1,  80, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0),
         (3, 3, 2, "Nordefjell", "Rustikk kose midti skogen",             800, "Nordfjellivegen 12","Nordefjell",11,4, 1, 110, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1),
         (4, 1, 3, "Lofoten",    "Rolig hytte med utsikt over fjellet",   600, "Lofotenvegen 43",  "Lofoten",  15, 5, 3, 160, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1),
         (5, 4, 4, "Lyngsalp",   "Vakker hytte rett ved vannet",          300, "Farsundvegen 12",  "Farsund",   4, 2, 2, 100, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0),

@@ -101,13 +101,7 @@ def send_enquiry(property_id):
     start_date = request.form.get("start_date")
     end_date = request.form.get("end_date")
 
-    models.create_enquiry(
-        tourist_id=tourist_id,
-        property_id=property_id,
-        text=text,
-        start_date=start_date,
-        end_date=end_date
-    )
+    models.create_enquiry(tourist_id=tourist_id, property_id=property_id, text=text, start_date=start_date, end_date=end_date)
 
     return redirect(url_for("property_details", property_id=property_id))
 
@@ -124,12 +118,12 @@ def owner_enquiries():
 
 
 @app.route("/property/<int:property_id>/bookmark", methods=["POST"])
-def addBookmark(tourist_id, property_id, notes):
+def addBookmark(property_id):
     tourist_id = session.get("tourist_id") #To get the correct bookmark list for this sessions tourist, same logic as listings (owner)
     if not tourist_id:
         return redirect(url_for("index"))
 
-    models.addBookmark(tourist_id, property_id, notes)
+    models.addBookmark(session.get("tourist_id"), property_id, request.form.get("notes", ""))
 
     return redirect(url_for("property_details", property_id=property_id))
 
