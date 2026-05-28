@@ -124,7 +124,7 @@ create_tables()
 def createData():    
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
-    
+
  
     
     cursor.executemany("""
@@ -184,6 +184,7 @@ def createData():
         (1, "img/SogneAneks.jpg"),
         (1, "img/SogneUte.jpg"),
         (2, "img/Varstolute.jpg"),
+        (2, "img/DroneVårstøl.jpg"),
         (2, "img/SognePeis.jpg"),
     ])
  
