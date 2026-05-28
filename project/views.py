@@ -145,3 +145,49 @@ def getBookmarks():
 #Must add logic for this: (This is to be able to update the database when a property is updated in listings.html)
 #@app.route("/property/<int:property_id>/edit", methods=["POST"])
 #def edit_property(property_id):
+
+
+
+
+@app.route("/property/add", methods=["POST"])
+@auth.seller_required
+def addProperty():
+    owner_id = session.get("owner_id")
+    
+    
+    name = request.form.get("name")
+    price_per_night = request.form.get("price_per_night")
+    property_type_id = request.form.get("property_type_id")
+    address = request.form.get("address")
+    location = request.form.get("location")
+    beds = request.form.get("beds")
+    bedrooms = request.form.get("bedrooms")
+    bathrooms = request.form.get("bathrooms")
+    area = request.form.get("area")
+    description = request.form.get("description")
+
+    # facilities
+    has_parking = 1 if request.form.get("has_parking") else 0
+    has_wifi = 1 if request.form.get("has_wifi") else 0
+    has_kitchen = 1 if request.form.get("has_kitchen") else 0
+    has_boat = 1 if request.form.get("has_boat") else 0
+    has_fireplace = 1 if request.form.get("has_fireplace") else 0
+    has_tv = 1 if request.form.get("has_tv") else 0
+    has_washer = 1 if request.form.get("has_washer") else 0
+    has_lounge = 1 if request.form.get("has_lounge") else 0
+    has_sauna = 1 if request.form.get("has_sauna") else 0
+    has_grill = 1 if request.form.get("has_grill") else 0
+    is_pet_friendly = 1 if request.form.get("is_pet_friendly") else 0
+    has_board_games = 1 if request.form.get("has_board_games") else 0
+
+    models.addProperty(
+        owner_id=owner_id, name=name, price_per_night=price_per_night,
+        property_type_id=property_type_id, address=address, location=location,
+        beds=beds, bedrooms=bedrooms, bathrooms=bathrooms, area=area,
+        description=description, has_parking=has_parking, has_wifi=has_wifi,
+        has_kitchen=has_kitchen, has_boat=has_boat, has_fireplace=has_fireplace,
+        has_tv=has_tv, has_washer=has_washer, has_lounge=has_lounge,
+        has_sauna=has_sauna, has_grill=has_grill, is_pet_friendly=is_pet_friendly,
+        has_board_games=has_board_games
+    )
+    return redirect(url_for("listings"))

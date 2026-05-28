@@ -138,6 +138,183 @@
             <h3 class="py-2 welcomeText">My listed properties</h3> 
         </div>
 
+
+        <div class="container p-4">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddPropertyModal">
+                Add Property
+            </button>
+        </div>
+
+        <!-- Property Modal -->
+        <div class="modal fade" id="AddPropertyModal" tabindex="-1" role="dialog" aria-labelledby="AddPropertyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="AddPropertyModalLabel">Add Property</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form method="POST" action="/property/add">
+
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Name</b></label>
+                                        <input type="text" name="name" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Price per night</b></label>
+                                        <input type="number" name="price_per_night" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Type</b></label>
+                                        <select name="property_type_id" class="form-select">
+                                            <option value="1">Mountain</option>
+                                            <option value="2">Woods</option>
+                                            <option value="3">Fjord</option>
+                                            <option value="4">Seaside</option>
+                                            <option value="5">Lake</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Address</b></label>
+                                        <input type="text" name="address" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Location</b></label>
+                                        <input type="text" name="location" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Beds</b></label>
+                                        <input type="number" name="beds" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Bedrooms</b></label>
+                                        <input type="number" name="bedrooms" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Bathrooms</b></label>
+                                        <input type="number" name="bathrooms" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Area (m²)</b></label>
+                                        <input type="number" name="area" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Description</b></label>
+                                        <textarea name="description" class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4>Facilities</h4>
+                            <div class="row p-1">
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_parking" id="Parking">
+                                        <label class="form-check-label" for="Parking"><strong>Parking</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_wifi" id="hasWifi">
+                                        <label class="form-check-label" for="hasWifi"><strong>Wifi</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_kitchen" id="hasKitchen">
+                                        <label class="form-check-label" for="hasKitchen"><strong>Kitchen</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_boat" id="hasBoat">
+                                        <label class="form-check-label" for="hasBoat"><strong>Boat</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_fireplace" id="hasFireplace">
+                                        <label class="form-check-label" for="hasFireplace"><strong>Fireplace</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_tv" id="hasTV">
+                                        <label class="form-check-label" for="hasTV"><strong>TV</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_washer" id="hasWasher">
+                                        <label class="form-check-label" for="hasWasher"><strong>Washer</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_lounge" id="hasLounge">
+                                        <label class="form-check-label" for="hasLounge"><strong>Lounge</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_sauna" id="hasSauna">
+                                        <label class="form-check-label" for="hasSauna"><strong>Sauna</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_grill" id="hasGrill">
+                                        <label class="form-check-label" for="hasGrill"><strong>Grill</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="is_pet_friendly" id="petFriendly">
+                                        <label class="form-check-label" for="petFriendly"><strong>Pet friendly</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3 col-lg-2 p-2">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="has_board_games" id="hasBoardgames">
+                                        <label class="form-check-label" for="hasBoardgames"><strong>Boardgames</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Add Property</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+                                                            
+
         
     <main class="col-12 col-lg-9"> 
                 <div class="container p-4">
@@ -382,10 +559,6 @@
 
                                                         </div>
 
-
-                                                        <div class="modal-footer"> <!--When this in clicked database must be updated-->
-                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-                                                        </div>
 
                                                         
 

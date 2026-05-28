@@ -124,4 +124,29 @@ def getBookmarks(tourist_id):
     return [dict(row) for row in rows]
 
 # must add: def updateProperty(propery_id):
+
+def addProperty(owner_id, name, price_per_night, property_type_id, address,
+                location, beds, bedrooms, bathrooms, area, description,
+                has_parking, has_wifi, has_kitchen, has_boat, has_fireplace,
+                has_tv, has_washer, has_lounge, has_sauna, has_grill,
+                is_pet_friendly, has_board_games):
+    conn = getConnection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        INSERT INTO properties (
+            owner_id, name, price_per_night, property_type_id, address,
+            location, beds, bedrooms, bathrooms, area, description,
+            has_parking, has_wifi, has_kitchen, has_boat, has_fireplace,
+            has_tv, has_washer, has_lounge, has_sauna, has_grill,
+            is_pet_friendly, has_board_games
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        owner_id, name, price_per_night, property_type_id, address,
+        location, beds, bedrooms, bathrooms, area, description,
+        has_parking, has_wifi, has_kitchen, has_boat, has_fireplace,
+        has_tv, has_washer, has_lounge, has_sauna, has_grill,
+        is_pet_friendly, has_board_games
+    ))
+    conn.commit()
+    conn.close()
     
