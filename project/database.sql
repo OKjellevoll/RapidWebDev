@@ -1,4 +1,5 @@
 import sqlite3
+from werkzeug.security import generate_password_hash
 
 DB_NAME = "RWD.db"
 
@@ -123,6 +124,7 @@ create_tables()
 def createData():    
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
+    
  
     
     cursor.executemany("""

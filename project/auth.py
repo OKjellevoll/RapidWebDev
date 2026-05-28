@@ -31,6 +31,8 @@ def login_owner(username, password):
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM owners WHERE username = ?", (username,))
     owner = cursor.fetchone()
+    print("=== DEBUG OWNER LOGIN ===")
+    print("Owner found:", owner)
     conn.close()
 
     if owner is None:
@@ -91,7 +93,7 @@ def register_user(username, password, email, role):
     if not username or not password or not email or role not in ["seller", "buyer"]:
         return False, "All fields are required and role must be seller or buyer."
 
-    hashed_pw = generate_password_hash(password)
+    hashed_pw = generate_password_hash(password, method="pbkdf2:sha256")
 
     try:
         conn = models.getConnection()
