@@ -26,7 +26,12 @@ def listings():
     if not owner_id:
         return redirect(url_for("index")) #if a user is not logged in you return to index indead of errormessage/crash
     properties_list = models.getPropertyByOwner(owner_id)
-    return render_template("listings.html", properties=properties_list)
+    main_images = []
+    for listing in properties_list:
+        images = models.getAllImagesProperty(listing["property_id"])
+        image = images[0] if images else None
+        main_images.append(image)
+    return render_template("listings.html", properties=properties_list, main_images=main_images)
 
 
 @app.route("/property/<int:property_id>")
@@ -87,7 +92,6 @@ def register():
 
 
 @app.route("/property/<int:property_id>/enquiry", methods=["POST"])
-@app.route("property_details.html")
 def send_enquiry(property_id):
     tourist_id = session.get("tourist_id")
     if not tourist_id:

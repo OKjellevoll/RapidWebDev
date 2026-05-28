@@ -190,7 +190,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card border-1 d-flex">
                                     {% if main_images[loop.index0] %}
-                                        <img src="{{ main_images[loop.index0].image_url }}" class="card-img-top rounded-2 object-fit-cover" height="220px">
+                                        <img src="{{ url_for('static', filename=main_images[loop.index0]['image_url']) }}" class="card-img-top rounded-2 object-fit-cover" height="220px">
                                     {% endif %}
                                     <div class="card-body">
                                         <div class="card-text py-1 border-top"> 

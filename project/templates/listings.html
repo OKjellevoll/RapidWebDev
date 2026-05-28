@@ -145,7 +145,9 @@
                         {% for property in properties %} <!-- Jinja -->
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card border-1 d-flex">
-                                    <img src=""> <!-- need functionality for pictures -->
+                                    {% if main_images[loop.index0] %}
+                                        <img src="{{ url_for('static', filename=main_images[loop.index0]['image_url']) }}" class="card-img-top rounded-2 object-fit-cover" height="220px">
+                                    {% endif %}
                                     <div class="card-body">
                                         
                                         <div class="card-text py-1 border-top"> 
@@ -159,11 +161,11 @@
                                         <!-- Modal for editing -->
                                         <div class="d-flex justify-content-end">
 
-                                                <div class="p-2"><button class="btn btn-primary  ms-auto"   data-bs-toggle="modal" data-bs-target= #"EditModal{{ property.property_id }}">Edit</button></div>
-                                                <div class="p-2"><a href="{{ url_for('property_details', property_id=property.property_id) }}" class="btn btn-primary">View</a></div> <!--Using jinja to get the correct URL by fetcing URL for given propertty_id details page-->
+                                                <div class="p-2"><button class="btn btn-primary  ms-auto"   data-bs-toggle="modal" data-bs-target= "#EditModal{{ property.property_id }}">Edit</button></div>
+                                                <div class="p-2"><a href="{{ url_for('property_details', property_id=property.property_id) }}" class="btn btn-primary">View</a></div> <!--Using jinja to get the correct URL by fetcing URL for given property_id details page-->
                                         </div>
                                             
-                                            <div class="modal fade" id="{{ property.property_id }}" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="EditModal{{ property.property_id }}" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                             <div class="modal-header">
@@ -283,7 +285,7 @@
                                                                         </div>
                                                                         <div class="col-4 col-md-3 col-lg-2 p-2">
                                                                             <div class="form-check form-switch">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasLounge {% if property.has_lounge %}checked{% endif %}>">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" id="hasLounge" {% if property.has_lounge %}checked{% endif %}>
                                                                                 <label class="form-check-label" for="hasLR"><strong>Lounge</strong></label>
                                                                             </div>
                                                                         </div>
