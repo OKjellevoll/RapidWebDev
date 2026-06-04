@@ -28,8 +28,8 @@ def login_owner(username, password):
     Login for Owner/Seller with hashed password verification.
     """
     conn = models.getConnection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM owners WHERE username = ?", (username,))
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM owners WHERE username = %s", (username,))
     owner = cursor.fetchone()
     print("=== DEBUG OWNER LOGIN ===")
     print("Owner found:", owner)
@@ -58,8 +58,8 @@ def login_tourist(username, password):
     Login for Tourist/Buyer with hashed password verification.
     """
     conn = models.getConnection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM tourists WHERE username = ?", (username,))
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM tourists WHERE username = %s", (username,))
     tourist = cursor.fetchone()
     conn.close()
 
@@ -97,11 +97,11 @@ def register_user(username, password, email, role):
 
     try:
         conn = models.getConnection()
-        cursor = conn.cursor()
+        cursor = conn.cursor(dictionary=True)
 
         if role == "seller":
             cursor.execute(
-                "SELECT owner_id FROM owners WHERE username = ? OR email = ?", 
+                "SELECT owner_id FROM owners WHERE username = %s OR email = %s",
                 (username, email)
             )
             if cursor.fetchone():
@@ -109,13 +109,13 @@ def register_user(username, password, email, role):
                 return False, "Username or email already exists."
 
             cursor.execute(
-                "INSERT INTO owners (username, password, email) VALUES (?, ?, ?)",
+                "INSERT INTO owners (username, password, email) VALUES (%s, %s, %s)",
                 (username, hashed_pw, email)
             )
 
         elif role == "buyer":
             cursor.execute(
-                "SELECT tourist_id FROM tourists WHERE username = ? OR email = ?", 
+                "SELECT tourist_id FROM tourists WHERE username = %s OR email = %s",
                 (username, email)
             )
             if cursor.fetchone():
@@ -123,7 +123,7 @@ def register_user(username, password, email, role):
                 return False, "Username or email already exists."
 
             cursor.execute(
-                "INSERT INTO tourists (username, password, email) VALUES (?, ?, ?)",
+                "INSERT INTO tourists (username, password, email) VALUES (%s, %s, %s)",
                 (username, hashed_pw, email)
             )
 
