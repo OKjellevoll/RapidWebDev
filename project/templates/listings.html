@@ -139,9 +139,13 @@
         </div>
 
 
+
         <div class="container p-4">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddPropertyModal">
                 Add Property
+            </button>
+            <button class="btn btn-secondary ms-2" data-bs-toggle="modal" data-bs-target="#EnquiriesModal">
+                Enquiries — Not responded: {{ unanswered }}
             </button>
         </div>
 
@@ -307,6 +311,54 @@
                             </div>
 
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      
+
+        <!-- Enquiries Modal -->
+        <div class="modal fade" id="EnquiriesModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Enquiries</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        {% for enquiry in enquiries %}
+                        <div class="border rounded p-2 mb-2">
+                            <p><strong>Property:</strong> {{ enquiry.property_name }}</p>
+                            <p><strong>Message:</strong> {{ enquiry.text }}</p>
+                            <p><strong>Dates:</strong> {{ enquiry.start_date }} → {{ enquiry.end_date }}</p>
+                            <p><strong>Status:</strong>
+                                {% if enquiry.accepted %}
+                                    Accepted
+                                {% elif enquiry.response %}
+                                    Declined
+                                {% else %}
+                                    Pending
+                                {% endif %}
+                            </p>
+                            {% if not enquiry.response %}
+                            <form method="POST" action="{{ url_for('respondToEnquiry', enquiry_id=enquiry.enquiry_id) }}">
+                                <div class="mb-2">
+                                    <label class="form-label"><strong>Your response</strong></label>
+                                    <textarea name="response" class="form-control" rows="2" required></textarea>
+                                </div>
+                                <div class="mb-2 form-check">
+                                    <input type="checkbox" name="accepted" class="form-check-input" id="accept{{ enquiry.enquiry_id }}">
+                                    <label class="form-check-label" for="accept{{ enquiry.enquiry_id }}">Accept booking</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">Send response</button>
+                            </form>
+                            {% else %}
+                            <p><strong>Your response:</strong> {{ enquiry.response }}</p>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

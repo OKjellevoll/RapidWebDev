@@ -22,16 +22,18 @@ def index():
 @app.route("/listings.html")
 @auth.seller_required
 def listings():
-    owner_id = session.get("owner_id") #using session as thougt in class
+    owner_id = session.get("owner_id")
     if not owner_id:
-        return redirect(url_for("index")) #if a user is not logged in you return to index indead of errormessage/crash
+        return redirect(url_for("index"))
     properties_list = models.getPropertyByOwner(owner_id)
+    enquiries = models.getEnquiriesForOwner(owner_id)
+    unanswered = sum(1 for e in enquiries if not e["response"])
     main_images = []
     for listing in properties_list:
         images = models.getAllImagesProperty(listing["property_id"])
         image = images[0] if images else None
         main_images.append(image)
-    return render_template("listings.html", properties=properties_list, main_images=main_images)
+    return render_template("listings.html", properties=properties_list, main_images=main_images, enquiries=enquiries, unanswered=unanswered)
 
 
 @app.route("/property/<int:property_id>")
@@ -105,16 +107,6 @@ def send_enquiry(property_id):
 
     return redirect(url_for("property_details", property_id=property_id))
 
-
-@app.route("/owner/enquiries")
-def owner_enquiries():
-    owner_id = session.get("owner_id")
-    if not owner_id:
-        return redirect(url_for("index"))
-
-    enquiries = models.getEnquiriesForOwner(owner_id)
-
-    return render_template("owner_enquiries.html", enquiries=enquiries)
 
 
 @app.route("/property/<int:property_id>/bookmark", methods=["POST"])
@@ -191,3 +183,14 @@ def addProperty():
         has_board_games=has_board_games
     )
     return redirect(url_for("listings"))
+
+
+
+#EnquieryResponse
+@app.route("/enquiry/<int:enquiry_id>/respond", methods=["POST"])
+@auth.seller_required
+def respondToEnquiry(enquiry_id):
+    response = request.form.get("response")
+    accepted = 1 if request.form.get("accepted") else 0
+    models.respondToEnquiry(enquiry_id, response, accepted)
+    return redirect(url_for("owner_enquiries"))

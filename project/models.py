@@ -147,3 +147,26 @@ def addProperty(owner_id, name, price_per_night, property_type_id, address,
     ))
     conn.commit()
     conn.close()
+
+
+def respondToEnquiry(enquiry_id, response, accepted):
+    conn = getConnection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        UPDATE enquiries SET response = %s, accepted = %s WHERE enquiry_id = %s
+    """, (response, accepted, enquiry_id))
+    conn.commit()
+    conn.close()
+
+def getEnquiriesForOwner(owner_id):
+    conn = getConnection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+        SELECT enquiries.*, properties.name as property_name
+        FROM enquiries
+        JOIN properties ON enquiries.property_id = properties.property_id
+        WHERE properties.owner_id = %s
+    """, (owner_id,))
+    rows = cursor.fetchall()
+    conn.close()
+    return rows

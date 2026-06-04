@@ -67,8 +67,8 @@ def createData():
             is_pet_friendly, has_board_games
         ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, [
-        (1, 1, 4, "Sogne", "Island cabin in the south of Norway", 150, "Risoya 14", "Sogne", 14, 6, 2, 120, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0),
-        (2, 2, 1, "Varstol", "Cozy mountain cabin with great views", 200, "Hustunet 3", "Sauda", 9, 4, 1, 80, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0),
+        (1, 1, 4, "Søgne", "Island cabin in the south of Norway", 150, "Risoya 14", "Sogne", 14, 6, 2, 120, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0),
+        (2, 2, 1, "Vårstøl", "Cozy mountain cabin with great views", 200, "Hustunet 3", "Sauda", 9, 4, 1, 80, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0),
         (3, 3, 2, "Nordefjell", "Cabin in the heart of the woods", 800, "Nordfjellivegen 12", "Nordefjell", 11, 4, 1, 110, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1),
         (4, 1, 3, "Lofoten", "Peaceful cabin with stunning mountain views", 600, "Lofotenvegen 43", "Lofoten", 15, 5, 3, 160, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1),
         (5, 4, 4, "Kragerø", "Cabin on the Telemark coast", 350, "Strandvegen 5", "Kragerø", 6, 3, 1, 90, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0),
