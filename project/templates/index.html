@@ -27,8 +27,8 @@
 
                 <div class="ms-auto d-flex ">
 
-                    <form class="d-flex p-2" role="search" >
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <form class="d-flex p-2" role="search" method="GET" action="{{ url_for('index') }}">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request.args.get('search', '') }}"/>
                         <button class="btn btnNav" type="submit">Search</button>
                     </form>
                     <!--Using Jinja to make listings page available just for owners in the navbar-->
@@ -45,7 +45,7 @@
                     {% if current_user %}
                         <!-- User is logged in -->
                         <div class="d-flex align-items-center px-2">
-                            <span class="me-2">Welcome, <strong>{{ current_user.username }}</strong></span>
+                            
                             
                             {% if current_user.role == "seller" %}
                                 <form class="p-2 d-flex">
@@ -56,6 +56,7 @@
                             <form class="p-2 d-flex">
                                 <a href="{{ url_for('logout') }}" class="btn btnNav">Logout</a>
                             </form>
+                            <span class="me-2">Welcome, <strong>{{ current_user.username }}</strong></span>
                         </div>
                     {% else %}
                         <!-- User is NOT logged in -->
@@ -117,7 +118,7 @@
         </div>
 
     </nav>
-
+    
 
         <!-- Welcome text -->
     <div class="divWelcome container-fluid text-center py-5">
@@ -126,68 +127,88 @@
     </div>
    
     <div class="container my-4">
-        <div class="row g-3">
-                 <!-- Filters -->
-                <aside class="col-12 col-lg-3 align-items-center">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="mb-2">
-                                <strong>
-                                    <h4>Refine Search</h4>
-                                </strong>
-                                <label for="type" class="form-label">Type</label>
-                            
-                                <select name="Type" id="type" class="form-select">
-                                    <option value="0">Not specified</option>
-                                    <option value="1">Mountain</option>
-                                    <option value="2">Seaside</option>
-                                    <option value="3">Fjord</option>
-                                    <option value="4">Woods</option>
-
-                                </select>
-                            </div>
-
-                            <div class="mb-2">
-                                <label for="bedroom" class="form-label">Bedrooms</label>
-                                <input type="number" id="bedroom" class="form-control" placeholder="Min bedrooms">
-
-                            </div>
-                            <h5>Facilities</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="boatCheck">
-                                <label class="form-check-label" for="boatCheck">
-                                    Boat
-                                </label>
-
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="saunaCheck">
-                                <label class="form-check-label" for="saunaCheck">
-                                    Sauna
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="parkingCheck">
-                                <label class="form-check-label" for="parkingCheck">
-                                    Parking
-                                </label>
-                            </div>
-
-                            
-                            <div class="py-2 d-flex">
-                                <button class="btn btn-primary m-1 ms-auto">Submit</button>
-                                <button class="btn btn-secondary m-1">Reset</button>
-                            </div>
-
-                        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row g-3">
+                 <!-- Filter -->
+                <aside class="col-12 col-lg-3 align-self-start">
+                    <form method="GET" action="{{ url_for('index') }}">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-2">
+                                    <strong><h4>Refine Search</h4></strong>
+                                    <label for="search" class="form-label">Search</label>
+                                    <input type="text" name="search" id="search" class="form-control" placeholder="Name or location" value="{{ request.args.get('search', '') }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="type" class="form-label">Type</label>
+                                    <select name="property_type" id="type" class="form-select">
+                                        <option value="">Not specified</option>
+                                        <option value="1">Mountain</option>
+                                        <option value="2">Woods</option>
+                                        <option value="3">Fjord</option>
+                                        <option value="4">Seaside</option>
+                                    </select>
+                                </div>
+                                <div class="mb-2">
+                                    <label for="bedroom" class="form-label">Bedrooms</label>
+                                    <input type="number" name="min_bedrooms" id="bedroom" class="form-control" placeholder="Min bedrooms">
+                                </div>
+                                <h5>Facilities</h5>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="has_boat" value="1" id="boatCheck">
+                                    <label class="form-check-label" for="boatCheck">Boat</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="has_sauna" value="1" id="saunaCheck">
+                                    <label class="form-check-label" for="saunaCheck">Sauna</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="has_parking" value="1" id="parkingCheck">
+                                    <label class="form-check-label" for="parkingCheck">Parking</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="has_wifi" value="1" id="wifiCheck">
+                                    <label class="form-check-label" for="wifiCheck">WiFi</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="has_fireplace" value="1" id="fireplaceCheck">
+                                    <label class="form-check-label" for="fireplaceCheck">Fireplace</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="has_kitchen" value="1" id="kitchenCheck">
+                                    <label class="form-check-label" for="kitchenCheck">Kitchen</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="has_tv" value="1" id="tvCheck">
+                                    <label class="form-check-label" for="tvCheck">TV</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="has_washer" value="1" id="washerCheck">
+                                    <label class="form-check-label" for="washerCheck">Washing machine</label>
+                                </div>
+                                <div class="py-2 d-flex">
+                                    <button type="submit" class="btn btn-primary m-1 ms-auto">Submit</button>
+                                    <a href="{{ url_for('index') }}" class="btn btn-secondary m-1">Reset</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </aside>
             
 
             <!-- Properties --> 
             <main class="col-12 col-lg-9"> 
 
-                <div class="container p-4">
+                <div class="container px-4">
                     <div class="row g-4 justify-content-start align-items-start">
 
                         {% for property in properties %}

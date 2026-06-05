@@ -40,12 +40,18 @@
                         <form method="POST" action="{{ url_for('register') }}">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" class="form-control {% if errors.username %}is-invalid{% endif %}" id="username" name="username" value="{{ form_data.get('username', '') }}" required>
+                                {% if errors.username %}
+                                    <div class="invalid-feedback">{{ errors.username }}</div>
+                                {% endif %}
                             </div>
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="text" class="form-control {% if errors.email %}is-invalid{% endif %}" id="email" name="email" value="{{ form_data.get('email', '') }}" required>
+                                {% if errors.email %}
+                                    <div class="invalid-feedback">{{ errors.email }}</div>
+                                {% endif %}
                             </div>
 
                             <div class="mb-3">

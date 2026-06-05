@@ -10,7 +10,7 @@ Follow the installer. At some point it will ask you to set a root password - rem
 STEP 2 - Install Python dependencies
 **************************************
 In your terminal, navigate to the project folder and run:
-    pip3 install flask mysql-connector-python werkzeug
+    pip install flask mysql-connector-python werkzeug
 
 
 STEP 3 - Set your database password in the project
@@ -32,7 +32,7 @@ Do the same in the file called "models.py".
 STEP 4 - Run the app
 ********************
 In your terminal, make sure you are in the project folder, then run:
-    python3 run.py
+    python run.py
 
 The app will automatically create the database, set up all the tables, and fill them with test data.
 

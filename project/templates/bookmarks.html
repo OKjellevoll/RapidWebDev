@@ -13,136 +13,37 @@
   <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-md bg-body-tertiary">
 
-            <!--Home/Logo-->
-        <div class="container-fluid d-flex align-items-center" >
-            <a href="index.html" class="navbar-brand logo">Hytte</a>
+        <div class="container-fluid d-flex align-items-center">
+            <a href="{{ url_for('index') }}" class="navbar-brand logo">Hytte</a>
 
-                <!-- Hamburger -->
-                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            
-                <div class="ms-auto d-flex ">
+                <div class="ms-auto d-flex">
 
                     {% if session.get('role') == 'seller' %}
                         <form class="p-2 d-flex"><a href="{{ url_for('listings') }}" class="btn btnNav">My listings</a></form>
                     {% endif %}
 
-                    {% if session.get('role') == 'buyer' %}
-                        <form class="p-2 d-flex"><a href="{{ url_for('getBookmarks') }}" class="btn btnNav">Saved Properties</a></form>
+                    {% if session.get('username') %}
+                        <div class="d-flex align-items-center px-2">
+                            <span class="me-2">Welcome, <strong>{{ session.get('username') }}</strong></span>
+                            <form class="p-2 d-flex">
+                                <a href="{{ url_for('logout') }}" class="btn btnNav">Logout</a>
+                            </form>
+                        </div>
                     {% endif %}
 
-                    
-                    <form class="d-flex p-2">
-                        <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#LoginModal">
-                            Log in
-                      </button>
-                                                        
-
-                                <!-- Modal -->
-                            <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="LoginModalLabel">Login</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        </button>
-                                    </div>
-                                    <div class="modal-body justify-content-start">
-
-
-                                        <div class="mb-3">
-                                            <label for="usernameInput" class="form-label"><b>Username</b></label>
-                                            <input type="text" id="usernameInput" class="form-control">
-                                            </div>
-
-                                            <div class="mb-3">
-                                            <label for="passwordInput" class="form-label"><b>Password</b></label>
-                                            <input type="password" id="passwordInput" class="form-control">
-                                        </div>
-
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                    <form class="d-flex p-2">
-
-                        
-                      <button type="button" class="btn btnNav" data-bs-toggle="modal" data-bs-target="#signUpModal">
-                            Sign Up
-                      </button>
-                                                        
-
-                                <!-- Modal -->
-                            <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="SignUplLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="LoginModalLabel">Sign Up</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        </button>
-                                    </div>
-                                    <div class="modal-body justify-content-start">
-
-
-                                        <div class="mb-3">
-                                            <label for="usernameInputSU" class="form-label"><b>Username</b></label>
-                                            <input type="text" id="usernameInputSU" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="passwordInputSU" class="form-label"><b>Password</b></label>
-                                            <input type="password" id="passwordInputSU" class="form-control">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="emailInputSU" class="form-label"><b>Email</b></label>
-                                            <input type="email" id="emailInputSU" class="form-control">
-                                        </div>
-
-
-                                        <h5>Your reason for signing up</h5>
-                                            <div class="row">
-                                                <div class="col-4 p-2">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="toRent">
-                                                        <label class="form-check-label" for="toRent"><strong>Rent</strong></label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-4 p-2">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="toLease">
-                                                        <label class="form-check-label" for="toRent"><strong>To Lease</strong></label>
-                                                    </div>
-                                                    </div>
-                                            </div>
-
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sign up</button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
                 </div>
             </div>
         </div>
-
     </nav>
 
-<div class="divWelcome container-fluid text-center py-4 width=100%">
-            <h3 class="py-2 welcomeText">Saved Properties</h3> 
-        </div>
+    <div class="divWelcome container-fluid text-center py-4 width=100%">
+        <h3 class="py-2 welcomeText">Saved Properties</h3> 
+    </div>
 
 
     <main class="col-12 col-lg-9"> 
@@ -154,22 +55,28 @@
                 {% for bookmark in bookmarks %}
                     <div class="col-12 col-md-6 col-lg-4" >
 
-                        <a href="{{ url_for('property_details', property_id=bookmark.property_id) }}">
-                            <div class="card border-1 d-flex" id="bookmarkCard" >
-                                <!--Must add images later!!!!-->
-                                {% if main_images[loop.index0] %}
-                                    <img src="{{ url_for('static', filename=main_images[loop.index0]['image_url']) }}" class="card-img-top rounded-2 object-fit-cover" height="220px">
-                                {% endif %}
-                                <div class="card-body" id="bookmarkCardBody">
-                                    
-                                    <div class="card-text py-1 border-top">
-                                        <h5><strong>{{ bookmark.name }}</strong></h5>
-                                        <Strong>Price per night: </Strong> {{bookmark.price_per_night}} <br>
-                                        <Strong>My notes</Strong> {{bookmark.notes}}<br>
+                        <div class="card border-1 d-flex" id="bookmarkCard">
+                            {% if main_images[loop.index0] %}
+                                <img src="{{ url_for('static', filename=main_images[loop.index0]['image_url']) }}" class="card-img-top rounded-2 object-fit-cover" height="220px">
+                            {% endif %}
+                            <div class="card-body" id="bookmarkCardBody">
+                                <div class="card-text py-1 border-top">
+                                    <h5><strong>{{ bookmark.name }}</strong></h5>
+                                    <Strong>Price per night: </Strong> {{bookmark.price_per_night}} <br>
+                                    <Strong>My notes: </Strong> {{bookmark.notes}}<br>
+                                    <div class="d-flex justify-content-end">
+                                        <div class="p-2">
+                                            <a href="{{ url_for('property_details', property_id=bookmark.property_id) }}" class="btn btn-primary">See details</a>
+                                        </div>
+                                        <div class="p-2">
+                                            <form method="POST" action="{{ url_for('removeBookmark', property_id=bookmark.property_id) }}">
+                                                <button type="submit" class="btn btn-primary">Remove</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
 
                     </div>
                 {%endfor%}

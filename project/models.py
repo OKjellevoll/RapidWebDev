@@ -31,14 +31,56 @@ def getTourist(tourist_id):
     return tourist
 
 
-def getAllProperties():
+## def getAllProperties(): NOT IN USE ANYMORE, USING FILTERING INSEAD.
+##   conn = getConnection()
+##   cursor = conn.cursor(dictionary=True)
+##    cursor.execute("SELECT * FROM properties")
+##    properties = cursor.fetchall()
+##    conn.close()
+##    return properties
+
+def filtering(search='', property_type=None, min_bedrooms=None, has_boat=None, has_sauna=None, has_parking=None, has_wifi=None, has_fireplace=None, has_kitchen=None, has_tv=None, has_washer=None):
     conn = getConnection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM properties")
+
+    query = "SELECT * FROM properties WHERE 1=1"
+    params = []
+
+    if search:
+        query += " AND (name LIKE %s OR location LIKE %s)"
+        params.extend([f"%{search}%", f"%{search}%"])
+
+    if property_type:
+        query += " AND property_type_id = %s"
+        params.append(property_type)
+
+    if min_bedrooms:
+        query += " AND bedrooms >= %s"
+        params.append(min_bedrooms)
+
+    if has_boat:
+        query += " AND has_boat = 1"
+
+    if has_sauna:
+        query += " AND has_sauna = 1"
+
+    if has_parking:
+        query += " AND has_parking = 1"
+    if has_wifi:
+        query += " AND has_wifi = 1"
+    if has_fireplace:
+        query += " AND has_fireplace = 1"
+    if has_kitchen:
+        query += " AND has_kitchen = 1"
+    if has_tv:
+        query += " AND has_tv = 1"
+    if has_washer:
+        query += " AND has_washer = 1"
+
+    cursor.execute(query, params)
     properties = cursor.fetchall()
     conn.close()
     return properties
-
 
 def getPropertyById(property_id):
     conn = getConnection()
@@ -110,6 +152,15 @@ def addBookmark(tourist_id, property_id, notes):
     conn.commit()
     conn.close()
 
+def removeBookmark(tourist_id, property_id):
+    conn = getConnection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        DELETE FROM bookmarks WHERE tourist_id = %s AND property_id = %s
+    """, (tourist_id, property_id))
+    conn.commit()
+    conn.close()
+
 def getBookmarks(tourist_id):
     conn = getConnection()
     cursor = conn.cursor(dictionary=True)
@@ -170,3 +221,26 @@ def getEnquiriesForOwner(owner_id):
     rows = cursor.fetchall()
     conn.close()
     return rows
+
+#methods for input validation:
+def usernameExists(username, role):
+    conn = getConnection()
+    cursor = conn.cursor(dictionary=True)
+    if role == "seller":
+        cursor.execute("SELECT owner_id FROM owners WHERE username = %s", (username,))
+    else:
+        cursor.execute("SELECT tourist_id FROM tourists WHERE username = %s", (username,))
+    result = cursor.fetchone()
+    conn.close()
+    return result is not None
+
+def emailExists(email, role):
+    conn = getConnection()
+    cursor = conn.cursor(dictionary=True)
+    if role == "seller":
+        cursor.execute("SELECT owner_id FROM owners WHERE email = %s", (email,))
+    else:
+        cursor.execute("SELECT tourist_id FROM tourists WHERE email = %s", (email,))
+    result = cursor.fetchone()
+    conn.close()
+    return result is not None
